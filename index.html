@@ -1,89 +1,260 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Scanner QR</title>
+  <title>STOCK OPNAME</title>
 
-<script src="https://unpkg.com/html5-qrcode"></script>
+  <script src="https://unpkg.com/html5-qrcode"></script>
 
-<style>
-body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  margin: 0;
-  padding: 20px;
-  background: #f5f5f5;
-}
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+      background: #f5f5f5;
+    }
 
-h1 {
-  margin-bottom: 20px;
-}
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
 
-#reader {
-  width: 100%;
-  max-width: 500px;
-  margin: auto;
-}
+    h2 {
+      text-align: center;
+    }
 
-#hasil {
-  margin-top: 20px;
-  padding: 15px;
-  background: white;
-  border-radius: 10px;
-  font-size: 18px;
-}
+    button, input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 14px;
+      margin-top: 8px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      border-radius: 8px;
+    }
 
-button {
-  padding: 14px 25px;
-  font-size: 18px;
-  border: none;
-  border-radius: 8px;
-  background: #1976d2;
-  color: white;
-}
-</style>
+    button {
+      border: none;
+      background: #1976d2;
+      color: white;
+      font-weight: bold;
+    }
 
+    input {
+      border: 1px solid #ccc;
+    }
+
+    #reader {
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    .hasil {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f0f7ff;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
 </head>
 
 <body>
 
-<h1>Scanner QR</h1>
+<div class="box">
 
-<div id="reader"></div>
+  <h2>STOCK OPNAME</h2>
 
-<div id="hasil">
-Silakan tekan tombol untuk memulai kamera.
+  <button onclick="mulaiScanner()">
+    📷 SCAN BARCODE
+  </button>
+
+  <div id="reader"></div>
+
+  <label>Barcode / NO_STOCK</label>
+
+  <input
+    type="text"
+    id="barcode"
+    placeholder="Atau masukkan barcode manual"
+  >
+
+  <button onclick="cariBarang()">
+    CARI BARANG
+  </button>
+
+  <div id="hasil" class="hasil">
+
+    <b>Nama Barang</b>
+    <div id="nama"></div>
+    <br>
+
+    <b>Merk</b>
+    <div id="merk"></div>
+    <br>
+
+    <b>Satuan</b>
+    <div id="satuan"></div>
+    <br>
+
+    <b>Stok Sistem</b>
+    <div id="stok"></div>
+
+  </div>
+
 </div>
 
 <script>
 
-function berhasilScan(teks) {
+const APPS_SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbz8VN8RLw6GR_2uX1mCOFxuqQnAw8Dm6UhFxOAL8aHD7-r83y_dYsJHIURDc6D408H9/exec";
 
-  document.getElementById("hasil").innerHTML =
-    "QR TERBACA:<br><strong>" + teks + "</strong>";
+let scanner = null;
 
-}
 
-function gagalScan(error) {
-  // Abaikan selama QR belum terbaca
-}
+function mulaiScanner() {
 
-const scanner = new Html5QrcodeScanner(
-  "reader",
-  {
-    fps: 10,
-    qrbox: {
-      width: 250,
-      height: 250
+  if (scanner) {
+    return;
+  }
+
+  scanner = new Html5Qrcode("reader");
+
+  scanner.start(
+    { facingMode: "environment" },
+
+    {
+      fps: 10,
+      qrbox: {
+        width: 300,
+        height: 150
+      }
     },
-    rememberLastUsedCamera: true
-  },
-  false
-);
 
-scanner.render(berhasilScan, gagalScan);
+    function(decodedText) {
+
+      document.getElementById("barcode").value =
+        decodedText;
+
+      scanner.stop().then(function() {
+
+        scanner.clear();
+        scanner = null;
+
+        cariBarang();
+
+      });
+
+    },
+
+    function(errorMessage) {
+      // QR belum terbaca
+    }
+
+  ).catch(function(error) {
+
+    alert(
+      "Kamera tidak dapat digunakan: " +
+      error
+    );
+
+  });
+}
+
+
+function cariBarang() {
+
+  const barcode =
+    document.getElementById("barcode").value.trim();
+
+  if (!barcode) {
+
+    alert(
+      "Masukkan atau scan barcode terlebih dahulu"
+    );
+
+    return;
+  }
+
+  document.getElementById("hasil").style.display =
+    "block";
+
+  document.getElementById("nama").textContent =
+    "Mencari data...";
+
+  document.getElementById("merk").textContent = "";
+  document.getElementById("satuan").textContent = "";
+  document.getElementById("stok").textContent = "";
+
+
+  const url =
+    APPS_SCRIPT_URL +
+    "?barcode=" +
+    encodeURIComponent(barcode);
+
+
+  fetch(url)
+
+    .then(function(response) {
+
+      if (!response.ok) {
+        throw new Error(
+          "Gagal menghubungi server"
+        );
+      }
+
+      return response.json();
+
+    })
+
+    .then(function(data) {
+
+      if (!data) {
+
+        document.getElementById("nama").innerHTML =
+          "<span class='error'>" +
+          "Barang tidak ditemukan" +
+          "</span>";
+
+        return;
+      }
+
+
+      document.getElementById("nama").textContent =
+        data.nama;
+
+      document.getElementById("merk").textContent =
+        data.merk;
+
+      document.getElementById("satuan").textContent =
+        data.satuan;
+
+      document.getElementById("stok").textContent =
+        data.stok + " " + data.satuan;
+
+    })
+
+    .catch(function(error) {
+
+      document.getElementById("nama").innerHTML =
+        "<span class='error'>" +
+        "Gagal mengambil data: " +
+        error.message +
+        "</span>";
+
+    });
+
+}
 
 </script>
 
