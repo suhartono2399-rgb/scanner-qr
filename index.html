@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>STOCK OPNAME</title>
 
@@ -116,21 +116,24 @@
 
 <script>
 
-const APPS_SCRIPT_URL =
+const API_URL =
 "https://script.google.com/macros/s/AKfycbz8VN8RLw6GR_2uX1mCOFxuqQnAw8Dm6UhFxOAL8aHD7-r83y_dYsJHIURDc6D408H9/exec";
 
 let scanner = null;
 
 
+/* =========================
+   SCANNER
+========================= */
+
 function mulaiScanner() {
 
-  if (scanner) {
-    return;
-  }
+  if (scanner) return;
 
   scanner = new Html5Qrcode("reader");
 
   scanner.start(
+
     { facingMode: "environment" },
 
     {
@@ -164,13 +167,16 @@ function mulaiScanner() {
   ).catch(function(error) {
 
     alert(
-      "Kamera tidak dapat digunakan: " +
-      error
+      "Kamera tidak dapat digunakan: " + error
     );
 
   });
 }
 
+
+/* =========================
+   CARI BARANG VIA JSONP
+========================= */
 
 function cariBarang() {
 
@@ -197,62 +203,67 @@ function cariBarang() {
   document.getElementById("stok").textContent = "";
 
 
-  const url =
-    APPS_SCRIPT_URL +
-    "?barcode=" +
-    encodeURIComponent(barcode);
+  const callbackName =
+    "hasilBarcode_" + Date.now();
 
 
-  fetch(url)
+  window[callbackName] = function(data) {
 
-    .then(function(response) {
-
-      if (!response.ok) {
-        throw new Error(
-          "Gagal menghubungi server"
-        );
-      }
-
-      return response.json();
-
-    })
-
-    .then(function(data) {
-
-      if (!data) {
-
-        document.getElementById("nama").innerHTML =
-          "<span class='error'>" +
-          "Barang tidak ditemukan" +
-          "</span>";
-
-        return;
-      }
-
-
-      document.getElementById("nama").textContent =
-        data.nama;
-
-      document.getElementById("merk").textContent =
-        data.merk;
-
-      document.getElementById("satuan").textContent =
-        data.satuan;
-
-      document.getElementById("stok").textContent =
-        data.stok + " " + data.satuan;
-
-    })
-
-    .catch(function(error) {
+    if (!data) {
 
       document.getElementById("nama").innerHTML =
         "<span class='error'>" +
-        "Gagal mengambil data: " +
-        error.message +
+        "Barang tidak ditemukan" +
         "</span>";
 
-    });
+      delete window[callbackName];
+
+      return;
+    }
+
+
+    document.getElementById("nama").textContent =
+      data.nama;
+
+    document.getElementById("merk").textContent =
+      data.merk;
+
+    document.getElementById("satuan").textContent =
+      data.satuan;
+
+    document.getElementById("stok").textContent =
+      data.stok + " " + data.satuan;
+
+
+    delete window[callbackName];
+
+  };
+
+
+  const script =
+    document.createElement("script");
+
+  script.src =
+    API_URL +
+    "?barcode=" +
+    encodeURIComponent(barcode) +
+    "&callback=" +
+    callbackName;
+
+
+  script.onerror = function() {
+
+    document.getElementById("nama").innerHTML =
+      "<span class='error'>" +
+      "Gagal menghubungi server" +
+      "</span>";
+
+    delete window[callbackName];
+
+  };
+
+
+  document.body.appendChild(script);
 
 }
 
