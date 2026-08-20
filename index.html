@@ -16,7 +16,17 @@
     }
 
     h1 {
-      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 14px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background: #1976d2;
+      color: white;
+      cursor: pointer;
     }
 
     #reader {
@@ -40,35 +50,72 @@
 
   <h1>Scanner QR</h1>
 
+  <button onclick="mulaiScanner()">📷 Mulai Scan</button>
+
   <div id="reader"></div>
 
   <div id="hasil">
-    Silakan arahkan kamera ke QR Code
+    Tekan tombol "Mulai Scan"
   </div>
 
   <script>
-    function berhasilScan(teks) {
+    let scanner;
+
+    async function mulaiScanner() {
+
       document.getElementById("hasil").innerHTML =
-        "QR terbaca:<br><strong>" + teks + "</strong>";
+        "Meminta akses kamera...";
+
+      try {
+
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: {
+            facingMode: "environment"
+          }
+        });
+
+        stream.getTracks().forEach(track => track.stop());
+
+        scanner = new Html5Qrcode("reader");
+
+        await scanner.start(
+          { facingMode: "environment" },
+          {
+            fps: 10,
+            qrbox: {
+              width: 250,
+              height: 250
+            }
+          },
+
+          (decodedText) => {
+
+            document.getElementById("hasil").innerHTML =
+              "QR TERBACA:<br><strong>" +
+              decodedText +
+              "</strong>";
+
+          },
+
+          (errorMessage) => {
+            // QR belum terbaca
+          }
+        );
+
+        document.getElementById("hasil").innerHTML =
+          "Kamera aktif. Arahkan kamera ke QR Code.";
+
+      } catch (error) {
+
+        document.getElementById("hasil").innerHTML =
+          "Kamera tidak dapat digunakan:<br><strong>" +
+          error.name +
+          "</strong><br>" +
+          error.message;
+
+        console.error(error);
+      }
     }
-
-    function gagalScan(error) {
-      // Abaikan error saat QR belum terbaca
-    }
-
-    const scanner = new Html5QrcodeScanner(
-      "reader",
-      {
-        fps: 10,
-        qrbox: {
-          width: 250,
-          height: 250
-        }
-      },
-      false
-    );
-
-    scanner.render(berhasilScan, gagalScan);
   </script>
 
 </body>
