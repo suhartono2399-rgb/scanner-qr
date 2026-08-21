@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>STOCK OPNAME</title>
 
@@ -64,6 +64,11 @@
 
     .error {
       color: red;
+      font-weight: bold;
+    }
+
+    .loading {
+      color: #1976d2;
       font-weight: bold;
     }
   </style>
@@ -133,9 +138,7 @@ function mulaiScanner() {
   scanner = new Html5Qrcode("reader");
 
   scanner.start(
-
     { facingMode: "environment" },
-
     {
       fps: 10,
       qrbox: {
@@ -175,7 +178,7 @@ function mulaiScanner() {
 
 
 /* =========================
-   CARI BARANG VIA JSONP
+   CARI BARANG
 ========================= */
 
 function cariBarang() {
@@ -195,16 +198,20 @@ function cariBarang() {
   document.getElementById("hasil").style.display =
     "block";
 
-  document.getElementById("nama").textContent =
-    "Mencari data...";
+  document.getElementById("nama").innerHTML =
+    "<span class='loading'>Mencari data...</span>";
 
   document.getElementById("merk").textContent = "";
   document.getElementById("satuan").textContent = "";
   document.getElementById("stok").textContent = "";
 
 
+  /*
+   * JSONP
+   */
+
   const callbackName =
-    "hasilBarcode_" + Date.now();
+    "callback_" + Date.now();
 
 
   window[callbackName] = function(data) {
@@ -249,6 +256,24 @@ function cariBarang() {
     encodeURIComponent(barcode) +
     "&callback=" +
     callbackName;
+
+
+  script.onload = function() {
+
+    setTimeout(function() {
+
+      if (window[callbackName]) {
+
+        document.getElementById("nama").innerHTML =
+          "<span class='error'>" +
+          "Server tidak mengembalikan data." +
+          "</span>";
+
+      }
+
+    }, 3000);
+
+  };
 
 
   script.onerror = function() {
