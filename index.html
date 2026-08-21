@@ -59,17 +59,6 @@
       padding: 15px;
       background: #f0f7ff;
       border-radius: 8px;
-      display: none;
-    }
-
-    .error {
-      color: red;
-      font-weight: bold;
-    }
-
-    .loading {
-      color: #1976d2;
-      font-weight: bold;
     }
   </style>
 </head>
@@ -98,25 +87,6 @@
     CARI BARANG
   </button>
 
-  <div id="hasil" class="hasil">
-
-    <b>Nama Barang</b>
-    <div id="nama"></div>
-    <br>
-
-    <b>Merk</b>
-    <div id="merk"></div>
-    <br>
-
-    <b>Satuan</b>
-    <div id="satuan"></div>
-    <br>
-
-    <b>Stok Sistem</b>
-    <div id="stok"></div>
-
-  </div>
-
 </div>
 
 <script>
@@ -128,17 +98,20 @@ let scanner = null;
 
 
 /* =========================
-   SCANNER
+   SCANNER BARCODE
 ========================= */
 
 function mulaiScanner() {
 
-  if (scanner) return;
+  if (scanner) {
+    return;
+  }
 
   scanner = new Html5Qrcode("reader");
 
   scanner.start(
     { facingMode: "environment" },
+
     {
       fps: 10,
       qrbox: {
@@ -164,7 +137,7 @@ function mulaiScanner() {
     },
 
     function(errorMessage) {
-      // QR belum terbaca
+      // Barcode belum terbaca
     }
 
   ).catch(function(error) {
@@ -195,101 +168,17 @@ function cariBarang() {
     return;
   }
 
-  document.getElementById("hasil").style.display =
-    "block";
-
-  document.getElementById("nama").innerHTML =
-    "<span class='loading'>Mencari data...</span>";
-
-  document.getElementById("merk").textContent = "";
-  document.getElementById("satuan").textContent = "";
-  document.getElementById("stok").textContent = "";
-
-
   /*
-   * JSONP
-   */
+    Langsung membuka Apps Script
+    dengan barcode yang dicari.
+  */
 
-  const callbackName =
-    "callback_" + Date.now();
-
-
-  window[callbackName] = function(data) {
-
-    if (!data) {
-
-      document.getElementById("nama").innerHTML =
-        "<span class='error'>" +
-        "Barang tidak ditemukan" +
-        "</span>";
-
-      delete window[callbackName];
-
-      return;
-    }
-
-
-    document.getElementById("nama").textContent =
-      data.nama;
-
-    document.getElementById("merk").textContent =
-      data.merk;
-
-    document.getElementById("satuan").textContent =
-      data.satuan;
-
-    document.getElementById("stok").textContent =
-      data.stok + " " + data.satuan;
-
-
-    delete window[callbackName];
-
-  };
-
-
-  const script =
-    document.createElement("script");
-
-  script.src =
+  const url =
     API_URL +
     "?barcode=" +
-    encodeURIComponent(barcode) +
-    "&callback=" +
-    callbackName;
+    encodeURIComponent(barcode);
 
-
-  script.onload = function() {
-
-    setTimeout(function() {
-
-      if (window[callbackName]) {
-
-        document.getElementById("nama").innerHTML =
-          "<span class='error'>" +
-          "Server tidak mengembalikan data." +
-          "</span>";
-
-      }
-
-    }, 3000);
-
-  };
-
-
-  script.onerror = function() {
-
-    document.getElementById("nama").innerHTML =
-      "<span class='error'>" +
-      "Gagal menghubungi server" +
-      "</span>";
-
-    delete window[callbackName];
-
-  };
-
-
-  document.body.appendChild(script);
-
+  window.location.href = url;
 }
 
 </script>
