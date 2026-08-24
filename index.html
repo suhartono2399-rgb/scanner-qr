@@ -2567,60 +2567,262 @@ async function hapusHasilOpnameDenganTanggal() {
 <!-- =====================================================
      BRIDGE GITHUB → APPS SCRIPT
 ====================================================== -->
+
 <iframe
   id="appsScriptBridge"
   src="https://script.google.com/macros/s/AKfycbxK_54TKlD52bSvHw05jTCGx4PQI7BR9oJMXtMzhW41pphOVXgJrjZErQkmfNH0Nhs/exec"
-  style="width:0;height:0;border:0;position:absolute;left:-9999px;visibility:hidden;"
-  aria-hidden="true"></iframe>
+  style="width:0;height:0;border:0;position:absolute;left:-9999px;"
+  aria-hidden="true">
+</iframe>
 
 <script>
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxK_54TKlD52bSvHw05jTCGx4PQI7BR9oJMXtMzhW41pphOVXgJrjZErQkmfNH0Nhs/exec";
+
+const APPS_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbxK_54TKlD52bSvHw05jTCGx4PQI7BR9oJMXtMzhW41pphOVXgJrjZErQkmfNH0Nhs/exec";
+
+
 let requestCounter = 0;
+
 const requestCallbacks = {};
 
-function serverRequest(data) {
-  return new Promise(function(resolve, reject) {
-    const requestId = "REQ_" + Date.now() + "_" + (++requestCounter);
-    requestCallbacks[requestId] = {resolve:resolve, reject:reject};
+let bridgeLoaded = false;
 
-    const iframe = document.getElementById("appsScriptBridge");
-    if (!iframe) {
-      delete requestCallbacks[requestId];
-      reject(new Error("Apps Script Bridge tidak ditemukan."));
-      return;
+
+/* =====================================================
+   TUNGGU BRIDGE APPS SCRIPT SELESAI DIMUAT
+===================================================== */
+
+const bridge =
+  document.getElementById(
+    "appsScriptBridge"
+  );
+
+
+if (bridge) {
+
+  bridge.addEventListener(
+    "load",
+    function() {
+
+      bridgeLoaded = true;
+
     }
+  );
 
-    iframe.contentWindow.postMessage(
-      {type:"GITHUB_REQUEST", requestId:requestId, data:data},
-      "*"
-    );
-
-    setTimeout(function() {
-      if (requestCallbacks[requestId]) {
-        delete requestCallbacks[requestId];
-        reject(new Error("Koneksi ke server Apps Script timeout."));
-      }
-    }, 30000);
-  });
 }
 
-window.addEventListener("message", function(event) {
-  if (!event.data || event.data.type !== "GITHUB_RESPONSE") return;
 
-  const callback = requestCallbacks[event.data.requestId];
-  if (!callback) return;
+/* =====================================================
+   REQUEST KE APPS SCRIPT
+===================================================== */
 
-  delete requestCallbacks[event.data.requestId];
+function serverRequest(data) {
 
-  if (event.data.success) {
-    callback.resolve(event.data.data);
-  } else {
-    callback.reject(new Error(event.data.error || "Terjadi kesalahan pada server."));
+  return new Promise(
+    function(resolve, reject) {
+
+      const requestId =
+        "REQ_" +
+        Date.now() +
+        "_" +
+        (++requestCounter);
+
+
+      requestCallbacks[requestId] = {
+        resolve: resolve,
+        reject: reject
+      };
+
+
+      const iframe =
+        document.getElementById(
+          "appsScriptBridge"
+        );
+
+
+      if (!iframe) {
+
+        delete requestCallbacks[
+          requestId
+        ];
+
+        reject(
+          new Error(
+            "Apps Script Bridge tidak ditemukan."
+          )
+        );
+
+        return;
+
+      }
+
+
+      function kirim() {
+
+        try {
+
+          iframe.contentWindow.postMessage(
+            {
+              type:
+                "GITHUB_REQUEST",
+
+              requestId:
+                requestId,
+
+              data:
+                data
+            },
+
+            "*"
+          );
+
+        }
+        catch (error) {
+
+          delete requestCallbacks[
+            requestId
+          ];
+
+          reject(error);
+
+        }
+
+      }
+
+
+      /*
+       * Kalau bridge sudah siap,
+       * langsung kirim.
+       */
+
+      if (bridgeLoaded) {
+
+        kirim();
+
+      }
+
+      /*
+       * Kalau belum siap,
+       * tunggu iframe selesai load.
+       */
+
+      else {
+
+        iframe.addEventListener(
+          "load",
+          function() {
+
+            bridgeLoaded = true;
+
+            kirim();
+
+          },
+          {
+            once: true
+          }
+        );
+
+      }
+
+
+      /*
+       * TIMEOUT
+       */
+
+      setTimeout(
+        function() {
+
+          if (
+            requestCallbacks[
+              requestId
+            ]
+          ) {
+
+            delete requestCallbacks[
+              requestId
+            ];
+
+            reject(
+              new Error(
+                "Koneksi ke server Apps Script timeout."
+              )
+            );
+
+          }
+
+        },
+        30000
+      );
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   TERIMA JAWABAN DARI APPS SCRIPT
+===================================================== */
+
+window.addEventListener(
+  "message",
+  function(event) {
+
+    if (
+      !event.data ||
+      event.data.type !==
+        "GITHUB_RESPONSE"
+    ) {
+
+      return;
+
+    }
+
+
+    const requestId =
+      event.data.requestId;
+
+
+    const callback =
+      requestCallbacks[
+        requestId
+      ];
+
+
+    if (!callback) {
+
+      return;
+
+    }
+
+
+    delete requestCallbacks[
+      requestId
+    ];
+
+
+    if (
+      event.data.success
+    ) {
+
+      callback.resolve(
+        event.data.data
+      );
+
+    }
+
+    else {
+
+      callback.reject(
+        new Error(
+          event.data.error ||
+          "Terjadi kesalahan pada server."
+        )
+      );
+
+    }
+
   }
-});
+);
+
 </script>
-
-
-</body>
-
-</html>
