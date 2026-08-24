@@ -2581,11 +2581,9 @@ let requestCounter = 0;
 
 const requestCallbacks = {};
 
-let bridgeLoaded = false;
-
 
 /* =====================================================
-   TERIMA JAWABAN APPS SCRIPT
+   TERIMA JAWABAN DARI APPS SCRIPT
 ===================================================== */
 
 window.addEventListener(
@@ -2630,30 +2628,6 @@ window.addEventListener(
 
   }
 );
-
-
-/* =====================================================
-   TUNGGU IFRAME APPS SCRIPT
-===================================================== */
-
-const appsScriptBridge =
-  document.getElementById(
-    "appsScriptBridge"
-  );
-
-
-if (appsScriptBridge) {
-
-  appsScriptBridge.addEventListener(
-    "load",
-    function() {
-
-      bridgeLoaded = true;
-
-    }
-  );
-
-}
 
 
 /* =====================================================
@@ -2704,76 +2678,42 @@ function serverRequest(data) {
       }
 
 
-      function kirim() {
+      /* ===============================================
+         LANGSUNG KIRIM REQUEST
+      =============================================== */
 
-        try {
+      try {
 
-          iframe.contentWindow.postMessage(
-            {
-              type:
-                "GITHUB_REQUEST",
+        iframe.contentWindow.postMessage(
+          {
+            type:
+              "GITHUB_REQUEST",
 
-              requestId:
-                requestId,
+            requestId:
+              requestId,
 
-              data:
-                data
-            },
-            "*"
-          );
+            data:
+              data
+          },
+          "*"
+        );
 
-        } catch (error) {
+      } catch (error) {
 
-          delete requestCallbacks[
-            requestId
-          ];
+        delete requestCallbacks[
+          requestId
+        ];
 
-          reject(error);
+        reject(error);
 
-        }
-
-      }
-
-
-      /*
-       * Kalau iframe sudah selesai load,
-       * langsung kirim.
-       */
-
-      if (bridgeLoaded) {
-
-        kirim();
-
-      } else {
-
-        /*
-         * Tunggu sampai iframe selesai load.
-         */
-
-        const timerLoad =
-          setInterval(
-            function() {
-
-              if (bridgeLoaded) {
-
-                clearInterval(
-                  timerLoad
-                );
-
-                kirim();
-
-              }
-
-            },
-            100
-          );
+        return;
 
       }
 
 
-      /*
-       * TIMEOUT
-       */
+      /* ===============================================
+         TIMEOUT
+      =============================================== */
 
       setTimeout(
         function() {
