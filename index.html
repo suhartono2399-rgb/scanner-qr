@@ -1,105 +1,2084 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>STOCK OPNAME</title>
+<meta charset="UTF-8">
 
-  <script src="https://unpkg.com/html5-qrcode"></script>
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1"
+>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      max-width: 500px;
-      margin: auto;
-      background: #f5f5f5;
-    }
+<title>LUCKY GROUP - STOK OPNAME</title>
 
-    .box {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
+<script src="https://unpkg.com/html5-qrcode"></script>
 
-    h2 {
-      text-align: center;
-    }
+<style>
 
-    button, input {
-      width: 100%;
-      box-sizing: border-box;
-      padding: 14px;
-      margin-top: 8px;
-      margin-bottom: 15px;
-      font-size: 16px;
-      border-radius: 8px;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    button {
-      border: none;
-      background: #1976d2;
-      color: white;
-      font-weight: bold;
-    }
+body {
 
-    input {
-      border: 1px solid #ccc;
-    }
+  font-family: Arial, sans-serif;
 
-    #reader {
-      width: 100%;
-      margin-top: 15px;
-    }
+  margin: 0;
 
-    .hasil {
-      margin-top: 20px;
-      padding: 15px;
-      background: #f0f7ff;
-      border-radius: 8px;
-    }
-  </style>
+  padding: 20px 12px 35px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e8f5e9 0%,
+      #f5f7f5 45%,
+      #e3f2fd 100%
+    );
+
+  color: #263238;
+
+}
+
+.box {
+
+  width: 100%;
+
+  max-width: 700px;
+
+  margin: auto;
+
+  background: #fff;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 8px 30px
+    rgba(0,0,0,.10);
+
+  overflow: hidden;
+
+}
+
+.header {
+
+  background:
+    linear-gradient(
+      135deg,
+      #0b5d3b,
+      #087f4d 55%,
+      #0a6843
+    );
+
+  color: white;
+
+  text-align: center;
+
+  padding: 25px 18px 22px;
+
+}
+
+.logo {
+
+  font-size: 30px;
+
+  font-weight: 900;
+
+  letter-spacing: 2px;
+
+}
+
+.judul {
+
+  margin-top: 7px;
+
+  font-size: 20px;
+
+  font-weight: 800;
+
+  letter-spacing: 3px;
+
+}
+
+.subjudul {
+
+  margin-top: 7px;
+
+  font-size: 12px;
+
+  opacity: .9;
+
+  letter-spacing: 1.5px;
+
+}
+
+.content {
+
+  padding: 20px;
+
+}
+
+.akun-box {
+
+  margin: 16px 20px 0;
+
+  padding: 12px 14px;
+
+  border-radius: 10px;
+
+  background: #f1f8e9;
+
+  border: 1px solid #c8e6c9;
+
+}
+
+.akun-nama {
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  color: #2e7d32;
+
+}
+
+.akun-role {
+
+  margin-top: 4px;
+
+  font-size: 12px;
+
+  color: #607d8b;
+
+}
+
+.section {
+
+  margin-bottom: 18px;
+
+}
+
+.section-title {
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  color: #0b5d3b;
+
+  margin-bottom: 8px;
+
+}
+
+label {
+
+  display: block;
+
+  font-weight: 800;
+
+  font-size: 13px;
+
+  color: #37474f;
+
+  margin-top: 13px;
+
+}
+
+select,
+input,
+button {
+
+  width: 100%;
+
+  padding: 13px;
+
+  margin-top: 7px;
+
+  margin-bottom: 12px;
+
+  font-size: 16px;
+
+  border-radius: 9px;
+
+}
+
+select,
+input {
+
+  border: 1px solid #cfd8dc;
+
+  background: white;
+
+  color: #263238;
+
+}
+
+button {
+
+  border: none;
+
+  background:
+    linear-gradient(
+      135deg,
+      #1976d2,
+      #1565c0
+    );
+
+  color: white;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+}
+
+button:disabled {
+
+  opacity: .6;
+
+  cursor: not-allowed;
+
+}
+
+.import-box {
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff8e1,
+      #fffdf4
+    );
+
+  border: 1px solid #ffe082;
+
+  padding: 16px;
+
+  border-radius: 12px;
+
+  margin: 18px 0;
+
+}
+
+.import-button {
+
+  background:
+    linear-gradient(
+      135deg,
+      #388e3c,
+      #2e7d32
+    );
+
+}
+
+.scanner-button {
+
+  background:
+    linear-gradient(
+      135deg,
+      #6a1b9a,
+      #8e24aa
+    );
+
+}
+
+#reader {
+
+  width: 100%;
+
+  margin-top: 8px;
+
+  overflow: hidden;
+
+  border-radius: 10px;
+
+}
+
+.saran {
+
+  border: 1px solid #dfe5e8;
+
+  border-radius: 9px;
+
+  overflow: hidden;
+
+  background: white;
+
+}
+
+.item {
+
+  padding: 12px;
+
+  border-bottom: 1px solid #eee;
+
+  cursor: pointer;
+
+}
+
+.item b {
+
+  display: block;
+
+  margin-bottom: 4px;
+
+}
+
+.item small {
+
+  color: #607d8b;
+
+}
+
+.hasil {
+
+  display: none;
+
+  margin-top: 18px;
+
+  padding: 17px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f1f8ff,
+      #f8fbff
+    );
+
+  border: 1px solid #bbdefb;
+
+  border-radius: 12px;
+
+}
+
+.info-row {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 12px;
+
+  padding: 9px 0;
+
+  border-bottom: 1px solid #e3f2fd;
+
+}
+
+.info-label {
+
+  color: #607d8b;
+
+  font-weight: 700;
+
+}
+
+.info-value {
+
+  text-align: right;
+
+  font-weight: 800;
+
+}
+
+.opname {
+
+  display: none;
+
+  margin-top: 20px;
+
+  padding: 18px;
+
+  border-radius: 12px;
+
+  border: 1px solid #c8e6c9;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f1f8e9,
+      #fafff7
+    );
+
+}
+
+.save-button {
+
+  background:
+    linear-gradient(
+      135deg,
+      #0b7a4b,
+      #0a6843
+    );
+
+}
+
+.result-box {
+
+  margin-top: 20px;
+
+  padding: 16px;
+
+  border-radius: 12px;
+
+  background: #fafafa;
+
+  border: 1px solid #ddd;
+
+}
+
+.status {
+
+  margin-top: 10px;
+
+  padding: 10px;
+
+  border-radius: 8px;
+
+  line-height: 1.5;
+
+  font-size: 14px;
+
+}
+
+.error {
+
+  background: #ffebee;
+
+  color: #c62828;
+
+}
+
+.success {
+
+  background: #e8f5e9;
+
+  color: #2e7d32;
+
+}
+
+.warning {
+
+  background: #fff8e1;
+
+  color: #8a5a00;
+
+}
+
+.status-login {
+
+  margin: 20px;
+
+  padding: 18px;
+
+  border-radius: 12px;
+
+  text-align: center;
+
+  font-weight: 700;
+
+  background: #f5f5f5;
+
+  color: #607d8b;
+
+}
+
+.hidden {
+
+  display: none !important;
+
+}
+
+.table-wrap {
+
+  overflow-x: auto;
+
+  margin-top: 15px;
+
+}
+
+table {
+
+  width: 100%;
+
+  border-collapse: collapse;
+
+  font-size: 13px;
+
+}
+
+th,
+td {
+
+  border: 1px solid #ddd;
+
+  padding: 8px;
+
+  white-space: nowrap;
+
+}
+
+th {
+
+  background: #eeeeee;
+
+}
+
+.danger {
+
+  background:
+    linear-gradient(
+      135deg,
+      #d32f2f,
+      #b71c1c
+    );
+
+}
+
+.download {
+
+  background:
+    linear-gradient(
+      135deg,
+      #388e3c,
+      #2e7d32
+    );
+
+}
+
+.secondary {
+
+  background:
+    linear-gradient(
+      135deg,
+      #607d8b,
+      #455a64
+    );
+
+}
+
+.footer {
+
+  text-align: center;
+
+  padding: 17px 10px 20px;
+
+  border-top: 1px solid #eee;
+
+  background: #fafafa;
+
+}
+
+.footer-main {
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  color: #0b5d3b;
+
+}
+
+.footer-version {
+
+  margin-top: 4px;
+
+  font-size: 10px;
+
+  color: #78909c;
+
+}
+
+#serverFrame {
+
+  position: fixed;
+
+  width: 1px;
+
+  height: 1px;
+
+  left: -100px;
+
+  top: -100px;
+
+  opacity: 0;
+
+  border: 0;
+
+  pointer-events: none;
+
+}
+
+@media(max-width:480px) {
+
+  body {
+    padding: 0;
+  }
+
+  .box {
+    border-radius: 0;
+    min-height: 100vh;
+  }
+
+  .content {
+    padding: 16px;
+  }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
+
 <div class="box">
 
-  <h2>STOCK OPNAME</h2>
 
-  <button onclick="mulaiScanner()">
+<div class="header">
+
+  <div class="logo">
+    LUCKY GROUP
+  </div>
+
+  <div class="judul">
+    STOK OPNAME
+  </div>
+
+  <div class="subjudul">
+    SISTEM PENGECEKAN STOK BARANG
+  </div>
+
+</div>
+
+
+<div
+  id="statusLogin"
+  class="status-login">
+
+  ⏳ Memeriksa akun Google...
+
+</div>
+
+
+<div
+  id="akunBox"
+  class="akun-box hidden">
+
+  <div
+    id="akunNama"
+    class="akun-nama">
+  </div>
+
+  <div
+    id="akunRole"
+    class="akun-role">
+  </div>
+
+</div>
+
+
+<div
+  id="appContent"
+  class="content hidden">
+
+
+<!-- CABANG -->
+
+<div class="section">
+
+  <div class="section-title">
+    PILIH CABANG
+  </div>
+
+  <label>CABANG</label>
+
+  <select id="cabang">
+
+    <option value="">
+      -- Pilih Cabang --
+    </option>
+
+  </select>
+
+</div>
+
+
+<!-- IMPORT -->
+
+<div
+  id="importBox"
+  class="import-box hidden">
+
+  <h3>
+    📥 IMPORT DATA STOK
+  </h3>
+
+  <p>
+    Pilih cabang lalu masukkan
+    file Excel hasil menu
+    <b>Posisi Stok</b>.
+  </p>
+
+  <input
+    type="file"
+    id="fileExcel"
+    accept=".xls,.xlsx">
+
+  <button
+    class="import-button"
+    onclick="importExcel()">
+
+    📥 IMPORT EXCEL KE DATA_STOK
+
+  </button>
+
+  <div
+    id="pesanImport"
+    class="status">
+  </div>
+
+</div>
+
+
+<!-- PETUGAS ADMIN -->
+
+<div
+  id="petugasSection"
+  class="section hidden">
+
+  <div class="section-title">
+    PETUGAS
+  </div>
+
+  <label>PETUGAS</label>
+
+  <select id="petugas">
+
+    <option value="">
+      -- Pilih Petugas --
+    </option>
+
+  </select>
+
+</div>
+
+
+<!-- PETUGAS LOGIN -->
+
+<div
+  id="petugasLoginSection"
+  class="section hidden">
+
+  <div class="section-title">
+    PETUGAS AKTIF
+  </div>
+
+  <label>NAMA PETUGAS</label>
+
+  <input
+    type="text"
+    id="petugasLogin"
+    readonly>
+
+</div>
+
+
+<!-- SCANNER -->
+
+<div class="section">
+
+  <div class="section-title">
+    SCAN BARCODE
+  </div>
+
+  <button
+    class="scanner-button"
+    onclick="mulaiScanner()">
+
     📷 SCAN BARCODE
+
   </button>
 
   <div id="reader"></div>
 
-  <label>Barcode / NO_STOCK</label>
+</div>
+
+
+<!-- CARI -->
+
+<div class="section">
+
+  <div class="section-title">
+    CARI BARANG
+  </div>
+
+  <label>
+    BARCODE / NO_STOCK / NAMA BARANG
+  </label>
 
   <input
     type="text"
     id="barcode"
-    placeholder="Atau masukkan barcode manual"
-  >
+    placeholder="Ketik nomor atau nama barang"
+    autocomplete="off">
+
+  <div
+    id="saran"
+    class="saran">
+  </div>
 
   <button onclick="cariBarang()">
-    CARI BARANG
+
+    🔎 CARI BARANG
+
   </button>
 
 </div>
 
+
+<!-- DATA BARANG -->
+
+<div
+  id="hasil"
+  class="hasil">
+
+  <div
+    class="section-title">
+
+    📦 DATA BARANG
+
+  </div>
+
+
+  <div class="info-row">
+
+    <div class="info-label">
+      Barcode
+    </div>
+
+    <div
+      id="rBarcode"
+      class="info-value">
+    </div>
+
+  </div>
+
+
+  <div class="info-row">
+
+    <div class="info-label">
+      Nama Barang
+    </div>
+
+    <div
+      id="rNama"
+      class="info-value">
+    </div>
+
+  </div>
+
+
+  <div class="info-row">
+
+    <div class="info-label">
+      Merk
+    </div>
+
+    <div
+      id="rMerk"
+      class="info-value">
+    </div>
+
+  </div>
+
+
+  <div class="info-row">
+
+    <div class="info-label">
+      Satuan
+    </div>
+
+    <div
+      id="rSatuan"
+      class="info-value">
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- OPNAME -->
+
+<div
+  id="opname"
+  class="opname">
+
+  <h3>
+    📝 INPUT STOK FISIK
+  </h3>
+
+  <p>
+    Barang:
+    <b id="oNama"></b>
+  </p>
+
+  <p>
+    Barcode:
+    <b id="oBarcode"></b>
+  </p>
+
+  <label>
+    STOK FISIK
+  </label>
+
+  <input
+    type="number"
+    id="stokFisik"
+    min="0"
+    inputmode="numeric"
+    placeholder="Masukkan jumlah fisik">
+
+  <button
+    id="saveButton"
+    class="save-button"
+    onclick="simpan()">
+
+    💾 SIMPAN STOCK OPNAME
+
+  </button>
+
+  <div
+    id="pesan"
+    class="status">
+  </div>
+
+</div>
+
+
+<!-- HASIL OPNAME -->
+
+<div
+  id="hasilBox"
+  class="result-box">
+
+
+<div class="section-title">
+
+  📋 HASIL OPNAME
+
+</div>
+
+
+<label>
+  TANGGAL
+</label>
+
+<input
+  type="date"
+  id="tanggalHasil">
+
+
+<label>
+  CABANG
+</label>
+
+<select id="cabangHasil">
+
+  <option value="">
+    -- Semua Cabang --
+  </option>
+
+</select>
+
+
+<button
+  onclick="lihatHasil()">
+
+  📋 LIHAT HASIL OPNAME
+
+</button>
+
+
+<button
+  class="download"
+  onclick="downloadHasil()">
+
+  ⬇️ DOWNLOAD HASIL OPNAME
+
+</button>
+
+
+<button
+  class="danger"
+  onclick="hapusHasil()">
+
+  🗑️ HAPUS HASIL OPNAME
+
+</button>
+
+
+<div
+  id="hasilOpnameTable"
+  class="table-wrap">
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<div class="footer">
+
+  <div class="footer-main">
+    Powered by HARTONO1226
+  </div>
+
+  <div class="footer-version">
+    V01.1226.2
+  </div>
+
+</div>
+
+
+</div>
+
+
+<!-- =================================================
+     APPS SCRIPT SEBAGAI SERVER BACKGROUND
+================================================== -->
+
+<iframe
+  id="serverFrame"
+  src="GANTI_DENGAN_URL_APPS_SCRIPT_ANDA"
+  allow="camera">
+</iframe>
+
+
 <script>
 
-const API_URL =
-"https://script.google.com/macros/s/AKfycbxK_54TKlD52bSvHw05jTCGx4PQI7BR9oJMXtMzhW41pphOVXgJrjZErQkmfNH0Nhs/exec";
+
+/* =================================================
+   VARIABEL
+================================================= */
 
 let scanner = null;
 
+let timer = null;
 
-/* =========================
-   SCANNER BARCODE
-========================= */
+let requestCounter = 0;
+
+let pendingRequests = {};
+
+let hasilTerakhir = [];
+
+let aksesSaya = null;
+
+
+/* =================================================
+   FRAME SERVER
+================================================= */
+
+const serverFrame =
+  document.getElementById(
+    "serverFrame"
+  );
+
+
+/* =================================================
+   REQUEST KE APPS SCRIPT
+================================================= */
+
+function serverRequest(
+  data
+) {
+
+  return new Promise(
+    function(resolve, reject) {
+
+      const requestId =
+        "REQ-" +
+        Date.now() +
+        "-" +
+        (++requestCounter);
+
+
+      pendingRequests[
+        requestId
+      ] = {
+
+        resolve:
+          resolve,
+
+        reject:
+          reject
+
+      };
+
+
+      serverFrame
+        .contentWindow
+        .postMessage(
+
+          {
+
+            type:
+              "GITHUB_REQUEST",
+
+            requestId:
+              requestId,
+
+            data:
+              data
+
+          },
+
+          "*"
+
+        );
+
+
+      setTimeout(
+        function() {
+
+          if (
+            pendingRequests[
+              requestId
+            ]
+          ) {
+
+            delete pendingRequests[
+              requestId
+            ];
+
+            reject(
+              new Error(
+                "Server tidak merespons."
+              )
+            );
+
+          }
+
+        },
+        30000
+      );
+
+    }
+  );
+
+}
+
+
+/* =================================================
+   RESPONSE SERVER
+================================================= */
+
+window.addEventListener(
+  "message",
+  function(event) {
+
+    const data =
+      event.data;
+
+    if (
+      !data ||
+      data.type !==
+        "GITHUB_RESPONSE"
+    ) {
+
+      return;
+
+    }
+
+
+    const pending =
+      pendingRequests[
+        data.requestId
+      ];
+
+
+    if (!pending) {
+
+      return;
+
+    }
+
+
+    delete pendingRequests[
+      data.requestId
+    ];
+
+
+    if (
+      data.success
+    ) {
+
+      pending.resolve(
+        data.data
+      );
+
+    } else {
+
+      pending.reject(
+        new Error(
+          data.error ||
+          "Terjadi kesalahan server."
+        )
+      );
+
+    }
+
+  }
+);
+
+
+/* =================================================
+   LOAD APLIKASI
+================================================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  loadAplikasi
+);
+
+
+async function loadAplikasi() {
+
+  try {
+
+    const akses =
+      await serverRequest({
+
+        type:
+          "GET_INFO_AKUN"
+
+      });
+
+
+    aksesSaya =
+      akses;
+
+
+    if (
+      !akses ||
+      akses.status !==
+        "DIIZINKAN"
+    ) {
+
+      tampilkanDitolak(
+        akses
+      );
+
+      return;
+
+    }
+
+
+    document.getElementById(
+      "statusLogin"
+    ).classList.add(
+      "hidden"
+    );
+
+
+    document.getElementById(
+      "appContent"
+    ).classList.remove(
+      "hidden"
+    );
+
+
+    document.getElementById(
+      "akunBox"
+    ).classList.remove(
+      "hidden"
+    );
+
+
+    document.getElementById(
+      "akunNama"
+    ).textContent =
+      "👤 " +
+      (
+        akses.nama ||
+        akses.email
+      );
+
+
+    document.getElementById(
+      "akunRole"
+    ).textContent =
+      "Hak akses: " +
+      formatRole(
+        akses.role
+      );
+
+
+    aturTampilanRole(
+      akses
+    );
+
+
+  } catch (error) {
+
+    tampilkanErrorLogin(
+      error.message
+    );
+
+  }
+
+}
+
+
+/* =================================================
+   ROLE
+================================================= */
+
+function formatRole(
+  role
+) {
+
+  role =
+    String(
+      role || ""
+    ).toUpperCase();
+
+
+  if (
+    role ===
+    "SUPER_ADMIN"
+  ) {
+
+    return "SUPER ADMIN";
+
+  }
+
+
+  if (
+    role ===
+    "ADMIN"
+  ) {
+
+    return "ADMIN";
+
+  }
+
+
+  if (
+    role ===
+    "PETUGAS"
+  ) {
+
+    return "PETUGAS";
+
+  }
+
+
+  return role;
+
+}
+
+
+/* =================================================
+   TAMPILAN ROLE
+================================================= */
+
+async function aturTampilanRole(
+  akses
+) {
+
+  const role =
+    String(
+      akses.role || ""
+    ).toUpperCase();
+
+
+  if (
+    role === "ADMIN" ||
+    role === "SUPER_ADMIN"
+  ) {
+
+    document.getElementById(
+      "importBox"
+    ).classList.remove(
+      "hidden"
+    );
+
+
+    document.getElementById(
+      "petugasSection"
+    ).classList.remove(
+      "hidden"
+    );
+
+
+    await loadCabang();
+
+
+    isiCabangHasil();
+
+    return;
+
+  }
+
+
+  if (
+    role === "PETUGAS"
+  ) {
+
+    document.getElementById(
+      "petugasLoginSection"
+    ).classList.remove(
+      "hidden"
+    );
+
+
+    document.getElementById(
+      "petugasLogin"
+    ).value =
+      akses.nama || "";
+
+
+    await loadCabang();
+
+
+    isiCabangHasil();
+
+    return;
+
+  }
+
+
+  tampilkanDitolak(
+    akses
+  );
+
+}
+
+
+/* =================================================
+   DITOLAK
+================================================= */
+
+function tampilkanDitolak(
+  akses
+) {
+
+  const status =
+    document.getElementById(
+      "statusLogin"
+    );
+
+
+  status.className =
+    "status-login error";
+
+
+  status.classList.remove(
+    "hidden"
+  );
+
+
+  if (
+    akses &&
+    akses.status ===
+      "TIDAK_TERIDENTIFIKASI"
+  ) {
+
+    status.innerHTML =
+      "❌ Akun Google tidak dapat diidentifikasi.<br>" +
+      "Pastikan menggunakan akun Google yang terdaftar.";
+
+  } else {
+
+    status.innerHTML =
+      "❌ Akun Google Anda belum memiliki akses ke aplikasi.";
+
+  }
+
+
+  document.getElementById(
+    "appContent"
+  ).classList.add(
+    "hidden"
+  );
+
+}
+
+
+/* =================================================
+   ERROR LOGIN
+================================================= */
+
+function tampilkanErrorLogin(
+  pesan
+) {
+
+  const status =
+    document.getElementById(
+      "statusLogin"
+    );
+
+
+  status.className =
+    "status-login error";
+
+
+  status.classList.remove(
+    "hidden"
+  );
+
+
+  status.innerHTML =
+    "❌ Gagal memeriksa akun:<br>" +
+    escapeHtml(
+      pesan
+    );
+
+}
+
+
+/* =================================================
+   LOAD CABANG
+================================================= */
+
+async function loadCabang() {
+
+  const select =
+    document.getElementById(
+      "cabang"
+    );
+
+
+  select.innerHTML =
+    '<option value="">-- Pilih Cabang --</option>';
+
+
+  try {
+
+    const list =
+      await serverRequest({
+
+        type:
+          "GET_CABANG"
+
+      });
+
+
+    list.forEach(
+      function(item) {
+
+        const option =
+          document.createElement(
+            "option"
+          );
+
+
+        option.value =
+          item.nama;
+
+
+        option.textContent =
+          item.nama;
+
+
+        select.appendChild(
+          option
+        );
+
+      }
+    );
+
+
+  } catch (error) {
+
+    alert(
+      "Gagal mengambil cabang: " +
+      error.message
+    );
+
+  }
+
+}
+
+
+/* =================================================
+   CABANG HASIL
+================================================= */
+
+async function isiCabangHasil() {
+
+  const source =
+    document.getElementById(
+      "cabang"
+    );
+
+  const target =
+    document.getElementById(
+      "cabangHasil"
+    );
+
+
+  target.innerHTML =
+    '<option value="">-- Semua Cabang --</option>';
+
+
+  Array.from(
+    source.options
+  ).forEach(
+    function(option) {
+
+      if (
+        option.value
+      ) {
+
+        const copy =
+          document.createElement(
+            "option"
+          );
+
+
+        copy.value =
+          option.value;
+
+
+        copy.textContent =
+          option.textContent;
+
+
+        target.appendChild(
+          copy
+        );
+
+      }
+
+    }
+  );
+
+}
+
+
+/* =================================================
+   CABANG → PETUGAS
+================================================= */
+
+document
+  .getElementById(
+    "cabang"
+  )
+  .addEventListener(
+    "change",
+    async function() {
+
+      await isiCabangHasil();
+
+
+      const cabang =
+        this.value;
+
+
+      const petugas =
+        document.getElementById(
+          "petugas"
+        );
+
+
+      if (!petugas) {
+        return;
+      }
+
+
+      petugas.innerHTML =
+        '<option value="">-- Pilih Petugas --</option>';
+
+
+      if (!cabang) {
+        return;
+      }
+
+
+      try {
+
+        const list =
+          await serverRequest({
+
+            type:
+              "GET_PETUGAS",
+
+            cabang:
+              cabang
+
+          });
+
+
+        list.forEach(
+          function(nama) {
+
+            const option =
+              document.createElement(
+                "option"
+              );
+
+
+            option.value =
+              nama;
+
+
+            option.textContent =
+              nama;
+
+
+            petugas.appendChild(
+              option
+            );
+
+          }
+        );
+
+
+      } catch (error) {
+
+        alert(
+          "Gagal mengambil petugas: " +
+          error.message
+        );
+
+      }
+
+    }
+  );
+
+
+/* =================================================
+   IMPORT EXCEL
+================================================= */
+
+async function importExcel() {
+
+  if (
+    !aksesSaya ||
+    (
+      aksesSaya.role !== "ADMIN" &&
+      aksesSaya.role !== "SUPER_ADMIN"
+    )
+  ) {
+
+    alert(
+      "Akses ditolak. Import hanya untuk ADMIN / SUPER ADMIN."
+    );
+
+    return;
+
+  }
+
+
+  const cabang =
+    document.getElementById(
+      "cabang"
+    ).value;
+
+
+  const file =
+    document.getElementById(
+      "fileExcel"
+    ).files[0];
+
+
+  const pesan =
+    document.getElementById(
+      "pesanImport"
+    );
+
+
+  if (!cabang) {
+
+    alert(
+      "Pilih CABANG terlebih dahulu."
+    );
+
+    return;
+
+  }
+
+
+  if (!file) {
+
+    alert(
+      "Pilih file Excel terlebih dahulu."
+    );
+
+    return;
+
+  }
+
+
+  pesan.className =
+    "status warning";
+
+
+  pesan.textContent =
+    "⏳ Sedang mengimport data...";
+
+
+  try {
+
+    const base64 =
+      await fileToBase64(
+        file
+      );
+
+
+    const result =
+      await serverRequest({
+
+        type:
+          "IMPORT_EXCEL",
+
+        base64:
+          base64,
+
+        fileName:
+          file.name,
+
+        cabang:
+          cabang
+
+      });
+
+
+    pesan.className =
+      "status success";
+
+
+    pesan.innerHTML =
+      "✅ IMPORT BERHASIL<br>" +
+
+      "Cabang: <b>" +
+      escapeHtml(
+        result.cabang
+      ) +
+      "</b><br>" +
+
+      "Jumlah stok: <b>" +
+      result.jumlah +
+      "</b><br>" +
+
+      "Data barang baru: <b>" +
+      result.jumlahBarang +
+      "</b>";
+
+
+  } catch (error) {
+
+    pesan.className =
+      "status error";
+
+
+    pesan.innerHTML =
+      "❌ IMPORT GAGAL:<br>" +
+      escapeHtml(
+        error.message
+      );
+
+  }
+
+}
+
+
+/* =================================================
+   FILE → BASE64
+================================================= */
+
+function fileToBase64(
+  file
+) {
+
+  return new Promise(
+    function(resolve, reject) {
+
+      const reader =
+        new FileReader();
+
+
+      reader.onload =
+        function(e) {
+
+          resolve(
+            e.target.result
+              .split(",")[1]
+          );
+
+        };
+
+
+      reader.onerror =
+        reject;
+
+
+      reader.readAsDataURL(
+        file
+      );
+
+    }
+  );
+
+}
+
+
+/* =================================================
+   AUTOCOMPLETE
+================================================= */
+
+document
+  .getElementById(
+    "barcode"
+  )
+  .addEventListener(
+    "input",
+    function() {
+
+      clearTimeout(
+        timer
+      );
+
+
+      const keyword =
+        this.value.trim();
+
+
+      const cabang =
+        document.getElementById(
+          "cabang"
+        ).value;
+
+
+      const saran =
+        document.getElementById(
+          "saran"
+        );
+
+
+      if (
+        !keyword ||
+        !cabang
+      ) {
+
+        saran.innerHTML =
+          "";
+
+        return;
+
+      }
+
+
+      timer =
+        setTimeout(
+          async function() {
+
+            try {
+
+              const list =
+                await serverRequest({
+
+                  type:
+                    "CARI_BARANG_LIST",
+
+                  keyword:
+                    keyword,
+
+                  cabang:
+                    cabang
+
+                });
+
+
+              saran.innerHTML =
+                "";
+
+
+              list.forEach(
+                function(item) {
+
+                  const div =
+                    document.createElement(
+                      "div"
+                    );
+
+
+                  div.className =
+                    "item";
+
+
+                  div.innerHTML =
+                    "<b>" +
+                    escapeHtml(
+                      item.nama
+                    ) +
+                    "</b>" +
+
+                    "<small>" +
+                    escapeHtml(
+                      item.barcode
+                    ) +
+                    " | " +
+                    escapeHtml(
+                      item.merk
+                    ) +
+                    "</small>";
+
+
+                  div.onclick =
+                    function() {
+
+                      document.getElementById(
+                        "barcode"
+                      ).value =
+                        item.barcode;
+
+
+                      saran.innerHTML =
+                        "";
+
+
+                      cariBarang();
+
+                    };
+
+
+                  saran.appendChild(
+                    div
+                  );
+
+                }
+              );
+
+
+            } catch (error) {
+
+              saran.innerHTML =
+                "<div class='item'>" +
+                escapeHtml(
+                  error.message
+                ) +
+                "</div>";
+
+            }
+
+          },
+          300
+        );
+
+    }
+  );
+
+
+/* =================================================
+   SCANNER
+================================================= */
 
 function mulaiScanner() {
 
@@ -107,81 +2086,1291 @@ function mulaiScanner() {
     return;
   }
 
-  scanner = new Html5Qrcode("reader");
+
+  scanner =
+    new Html5Qrcode(
+      "reader"
+    );
+
 
   scanner.start(
-    { facingMode: "environment" },
+
+    {
+      facingMode:
+        "environment"
+    },
 
     {
       fps: 10,
+
       qrbox: {
         width: 300,
         height: 150
       }
+
     },
 
     function(decodedText) {
 
-      document.getElementById("barcode").value =
+      document.getElementById(
+        "barcode"
+      ).value =
         decodedText;
 
-      scanner.stop().then(function() {
 
-        scanner.clear();
-        scanner = null;
+      scanner.stop()
 
-        cariBarang();
+        .then(
+          function() {
 
-      });
+            scanner.clear();
+
+            scanner =
+              null;
+
+            cariBarang();
+
+          }
+        )
+
+        .catch(
+          function() {
+
+            scanner =
+              null;
+
+            cariBarang();
+
+          }
+        );
 
     },
 
-    function(errorMessage) {
-      // Barcode belum terbaca
+    function() {}
+
+  )
+
+  .catch(
+    function(error) {
+
+      alert(
+        "Kamera tidak dapat digunakan: " +
+        error
+      );
+
+      scanner =
+        null;
+
     }
+  );
 
-  ).catch(function(error) {
-
-    alert(
-      "Kamera tidak dapat digunakan: " + error
-    );
-
-  });
 }
 
 
-/* =========================
+/* =================================================
    CARI BARANG
-========================= */
+================================================= */
 
-function cariBarang() {
+async function cariBarang() {
 
   const barcode =
-    document.getElementById("barcode").value.trim();
+    document.getElementById(
+      "barcode"
+    ).value.trim();
+
+
+  const cabang =
+    document.getElementById(
+      "cabang"
+    ).value;
+
+
+  if (!cabang) {
+
+    alert(
+      "Pilih cabang terlebih dahulu."
+    );
+
+    return;
+
+  }
+
 
   if (!barcode) {
 
     alert(
-      "Masukkan atau scan barcode terlebih dahulu"
+      "Masukkan atau scan barcode."
     );
 
     return;
+
   }
 
-  /*
-    Langsung membuka Apps Script
-    dengan barcode yang dicari.
-  */
+
+  document.getElementById(
+    "hasil"
+  ).style.display =
+    "none";
+
+
+  document.getElementById(
+    "opname"
+  ).style.display =
+    "none";
+
+
+  try {
+
+    const data =
+      await serverRequest({
+
+        type:
+          "CEK_BARANG",
+
+        barcode:
+          barcode,
+
+        cabang:
+          cabang
+
+      });
+
+
+    if (!data) {
+
+      alert(
+        "Barang tidak ditemukan."
+      );
+
+      return;
+
+    }
+
+
+    /*
+     * SAMA SEPERTI SISTEM LAMA:
+     *
+     * HANYA DATA BARANG
+     * YANG DITAMPILKAN.
+     *
+     * STOK SISTEM TIDAK DICARI.
+     */
+
+    document.getElementById(
+      "hasil"
+    ).style.display =
+      "block";
+
+
+    document.getElementById(
+      "rBarcode"
+    ).textContent =
+      data.barcode;
+
+
+    document.getElementById(
+      "rNama"
+    ).textContent =
+      data.nama;
+
+
+    document.getElementById(
+      "rMerk"
+    ).textContent =
+      data.merk;
+
+
+    document.getElementById(
+      "rSatuan"
+    ).textContent =
+      data.satuan;
+
+
+    document.getElementById(
+      "opname"
+    ).style.display =
+      "block";
+
+
+    document.getElementById(
+      "oNama"
+    ).textContent =
+      data.nama;
+
+
+    document.getElementById(
+      "oBarcode"
+    ).textContent =
+      data.barcode;
+
+
+    document.getElementById(
+      "stokFisik"
+    ).value =
+      "";
+
+
+    document.getElementById(
+      "stokFisik"
+    ).disabled =
+      false;
+
+
+    document.getElementById(
+      "saveButton"
+    ).disabled =
+      false;
+
+
+    document.getElementById(
+      "pesan"
+    ).className =
+      "status";
+
+
+    document.getElementById(
+      "pesan"
+    ).textContent =
+      "";
+
+
+    /*
+     * CEK DOUBLE INPUT
+     * tetap seperti sistem lama.
+     */
+
+    const cek =
+      await serverRequest({
+
+        type:
+          "CEK_SUDAH_INPUT",
+
+        cabang:
+          cabang,
+
+        barcode:
+          data.barcode
+
+      });
+
+
+    if (
+      cek &&
+      cek.sudah
+    ) {
+
+      document.getElementById(
+        "pesan"
+      ).className =
+        "status warning";
+
+
+      document.getElementById(
+        "pesan"
+      ).innerHTML =
+        "⚠️ BARANG SUDAH DIINPUT oleh <b>" +
+        escapeHtml(
+          cek.petugas
+        ) +
+        "</b>";
+
+
+      document.getElementById(
+        "stokFisik"
+      ).disabled =
+        true;
+
+
+      document.getElementById(
+        "saveButton"
+      ).disabled =
+        true;
+
+    }
+
+
+  } catch (error) {
+
+    alert(
+      "Gagal mencari barang: " +
+      error.message
+    );
+
+  }
+
+}
+
+
+/* =================================================
+   SIMPAN
+================================================= */
+
+async function simpan() {
+
+  const cabang =
+    document.getElementById(
+      "cabang"
+    ).value;
+
+
+  const barcode =
+    document.getElementById(
+      "oBarcode"
+    ).textContent;
+
+
+  const stokFisik =
+    document.getElementById(
+      "stokFisik"
+    ).value;
+
+
+  if (!cabang) {
+
+    alert(
+      "Cabang belum dipilih."
+    );
+
+    return;
+
+  }
+
+
+  if (!barcode) {
+
+    alert(
+      "Barang belum dipilih."
+    );
+
+    return;
+
+  }
+
+
+  if (
+    stokFisik === "" ||
+    Number(stokFisik) < 0
+  ) {
+
+    alert(
+      "Masukkan stok fisik."
+    );
+
+    return;
+
+  }
+
+
+  const pesan =
+    document.getElementById(
+      "pesan"
+    );
+
+
+  const saveButton =
+    document.getElementById(
+      "saveButton"
+    );
+
+
+  pesan.className =
+    "status warning";
+
+
+  pesan.textContent =
+    "⏳ Menyimpan...";
+
+
+  saveButton.disabled =
+    true;
+
+
+  try {
+
+    /*
+     * PENTING:
+     *
+     * Kita TIDAK mengambil stok sistem
+     * dari browser.
+     *
+     * Server simpanOpname()
+     * yang mengambil stok sistem,
+     * menghitung selisih,
+     * lalu mengembalikan hasil.
+     */
+
+    const result =
+      await serverRequest({
+
+        type:
+          "SIMPAN_OPNAME",
+
+        cabang:
+          cabang,
+
+        barcode:
+          barcode,
+
+        stokFisik:
+          stokFisik
+
+      });
+
+
+    if (
+      result.status ===
+      "SUDAH"
+    ) {
+
+      pesan.className =
+        "status warning";
+
+
+      pesan.innerHTML =
+        "⚠️ Barang sudah diinput oleh <b>" +
+        escapeHtml(
+          result.petugas
+        ) +
+        "</b>";
+
+
+      document.getElementById(
+        "stokFisik"
+      ).disabled =
+        true;
+
+
+      return;
+
+    }
+
+
+    /*
+     * BARU DI SINI:
+     *
+     * STOK SISTEM
+     * STOK FISIK
+     * SELISIH
+     *
+     * ditampilkan.
+     */
+
+    pesan.className =
+      "status success";
+
+
+    pesan.innerHTML =
+
+      "✅ BERHASIL DISIMPAN" +
+
+      "<br><br>" +
+
+      "Petugas: <b>" +
+      escapeHtml(
+        result.petugas
+      ) +
+      "</b>" +
+
+      "<br>" +
+
+      "Stok Sistem: <b>" +
+      result.stokSistem +
+      "</b>" +
+
+      "<br>" +
+
+      "Stok Fisik: <b>" +
+      result.stokFisik +
+      "</b>" +
+
+      "<br>" +
+
+      "Selisih: <b>" +
+      result.selisih +
+      "</b>";
+
+
+    document.getElementById(
+      "stokFisik"
+    ).disabled =
+      true;
+
+
+  } catch (error) {
+
+    pesan.className =
+      "status error";
+
+
+    pesan.innerHTML =
+      "❌ GAGAL:<br>" +
+      escapeHtml(
+        error.message
+      );
+
+
+    saveButton.disabled =
+      false;
+
+  }
+
+}
+
+
+/* =================================================
+   LIHAT HASIL
+================================================= */
+
+async function lihatHasil() {
+
+  if (
+    !aksesSaya ||
+    (
+      aksesSaya.role !==
+        "ADMIN" &&
+      aksesSaya.role !==
+        "SUPER_ADMIN"
+    )
+  ) {
+
+    alert(
+      "Fitur hasil opname hanya untuk ADMIN / SUPER ADMIN."
+    );
+
+    return;
+
+  }
+
+
+  const tanggal =
+    document.getElementById(
+      "tanggalHasil"
+    ).value;
+
+
+  const cabang =
+    document.getElementById(
+      "cabangHasil"
+    ).value;
+
+
+  if (!tanggal) {
+
+    alert(
+      "Pilih tanggal terlebih dahulu."
+    );
+
+    return;
+
+  }
+
+
+  const table =
+    document.getElementById(
+      "hasilOpnameTable"
+    );
+
+
+  table.innerHTML =
+    "⏳ Mengambil hasil opname...";
+
+
+  try {
+
+    hasilTerakhir =
+      await serverRequest({
+
+        type:
+          "GET_HASIL_OPNAME",
+
+        tanggal:
+          tanggal,
+
+        cabang:
+          cabang
+
+      });
+
+
+    tampilkanTabelHasil(
+      hasilTerakhir
+    );
+
+
+  } catch (error) {
+
+    table.innerHTML =
+      "<div class='status error'>" +
+      escapeHtml(
+        error.message
+      ) +
+      "</div>";
+
+  }
+
+}
+
+
+/* =================================================
+   TABEL
+================================================= */
+
+function tampilkanTabelHasil(
+  data
+) {
+
+  const table =
+    document.getElementById(
+      "hasilOpnameTable"
+    );
+
+
+  if (
+    !data ||
+    !data.length
+  ) {
+
+    table.innerHTML =
+      "<div class='status warning'>" +
+      "Tidak ada hasil opname pada tanggal tersebut." +
+      "</div>";
+
+    return;
+
+  }
+
+
+  let html = "";
+
+
+  html +=
+    "<table>";
+
+
+  html +=
+    "<thead><tr>" +
+
+    "<th>No</th>" +
+
+    "<th>Waktu</th>" +
+
+    "<th>Cabang</th>" +
+
+    "<th>Barcode</th>" +
+
+    "<th>Nama Barang</th>" +
+
+    "<th>Satuan</th>" +
+
+    "<th>Petugas</th>" +
+
+    "<th>Stok Sistem</th>" +
+
+    "<th>Stok Fisik</th>" +
+
+    "<th>Selisih</th>" +
+
+    "</tr></thead>";
+
+
+  html +=
+    "<tbody>";
+
+
+  data.forEach(
+    function(item, index) {
+
+      html +=
+        "<tr>" +
+
+        "<td>" +
+        (index + 1) +
+        "</td>" +
+
+        "<td>" +
+        escapeHtml(
+          item.waktu
+        ) +
+        "</td>" +
+
+        "<td>" +
+        escapeHtml(
+          item.cabang
+        ) +
+        "</td>" +
+
+        "<td>" +
+        escapeHtml(
+          item.barcode
+        ) +
+        "</td>" +
+
+        "<td>" +
+        escapeHtml(
+          item.nama
+        ) +
+        "</td>" +
+
+        "<td>" +
+        escapeHtml(
+          item.satuan
+        ) +
+        "</td>" +
+
+        "<td>" +
+        escapeHtml(
+          item.petugas
+        ) +
+        "</td>" +
+
+        "<td>" +
+        item.stokSistem +
+        "</td>" +
+
+        "<td>" +
+        item.stokFisik +
+        "</td>" +
+
+        "<td>" +
+        item.selisih +
+        "</td>" +
+
+        "</tr>";
+
+    }
+  );
+
+
+  html +=
+    "</tbody></table>";
+
+
+  table.innerHTML =
+    html;
+
+}
+
+
+/* =================================================
+   DOWNLOAD
+================================================= */
+
+function downloadHasil() {
+
+  if (
+    !hasilTerakhir ||
+    !hasilTerakhir.length
+  ) {
+
+    alert(
+      "Tampilkan hasil opname terlebih dahulu."
+    );
+
+    return;
+
+  }
+
+
+  let csv =
+    "Tanggal,Waktu,Cabang,Barcode,Nama Barang,Satuan,Petugas,Stok Sistem,Stok Fisik,Selisih\n";
+
+
+  hasilTerakhir.forEach(
+    function(item) {
+
+      csv += [
+
+        csvCell(
+          item.tanggal
+        ),
+
+        csvCell(
+          item.waktu
+        ),
+
+        csvCell(
+          item.cabang
+        ),
+
+        csvCell(
+          item.barcode
+        ),
+
+        csvCell(
+          item.nama
+        ),
+
+        csvCell(
+          item.satuan
+        ),
+
+        csvCell(
+          item.petugas
+        ),
+
+        item.stokSistem,
+
+        item.stokFisik,
+
+        item.selisih
+
+      ].join(",") +
+
+      "\n";
+
+    }
+  );
+
+
+  const blob =
+    new Blob(
+      [csv],
+      {
+        type:
+          "text/csv;charset=utf-8;"
+      }
+    );
+
 
   const url =
-    API_URL +
-    "?barcode=" +
-    encodeURIComponent(barcode);
+    URL.createObjectURL(
+      blob
+    );
 
-  window.location.href = url;
+
+  const tanggal =
+    document.getElementById(
+      "tanggalHasil"
+    ).value;
+
+
+  const a =
+    document.createElement(
+      "a"
+    );
+
+
+  a.href =
+    url;
+
+
+  a.download =
+    "HASIL_OPNAME_" +
+    tanggal +
+    ".csv";
+
+
+  document.body.appendChild(
+    a
+  );
+
+
+  a.click();
+
+
+  document.body.removeChild(
+    a
+  );
+
+
+  URL.revokeObjectURL(
+    url
+  );
+
+}
+
+
+/* =================================================
+   CSV
+================================================= */
+
+function csvCell(
+  value
+) {
+
+  return '"' +
+    String(
+      value == null
+        ? ""
+        : value
+    )
+      .replace(
+        /"/g,
+        '""'
+      ) +
+    '"';
+
+}
+
+
+/* =================================================
+   HAPUS HASIL
+================================================= */
+
+async function hapusHasil() {
+
+  if (
+    !aksesSaya ||
+    (
+      aksesSaya.role !==
+        "ADMIN" &&
+      aksesSaya.role !==
+        "SUPER_ADMIN"
+    )
+  ) {
+
+    alert(
+      "Hanya ADMIN / SUPER ADMIN yang dapat menghapus hasil opname."
+    );
+
+    return;
+
+  }
+
+
+  const tanggal =
+    document.getElementById(
+      "tanggalHasil"
+    ).value;
+
+
+  const cabang =
+    document.getElementById(
+      "cabangHasil"
+    ).value;
+
+
+  if (!tanggal) {
+
+    alert(
+      "Pilih tanggal yang akan dihapus."
+    );
+
+    return;
+
+  }
+
+
+  let pesan =
+    "PERINGATAN!\n\n" +
+
+    "Hasil opname tanggal:\n" +
+    tanggal;
+
+
+  if (cabang) {
+
+    pesan +=
+      "\nCabang: " +
+      cabang;
+
+  } else {
+
+    pesan +=
+      "\nSEMUA CABANG";
+
+  }
+
+
+  pesan +=
+    "\n\nData hasil opname akan dihapus." +
+
+    "\nDATA_STOK tidak akan dihapus." +
+
+    "\n\nLanjutkan?";
+
+
+  if (
+    !confirm(pesan)
+  ) {
+
+    return;
+
+  }
+
+
+  try {
+
+    const result =
+      await serverRequest({
+
+        type:
+          "HAPUS_HASIL_OPNAME",
+
+        tanggal:
+          tanggal,
+
+        cabang:
+          cabang
+
+      });
+
+
+    alert(
+      "Berhasil menghapus " +
+      result.jumlah +
+      " hasil opname."
+    );
+
+
+    hasilTerakhir =
+      [];
+
+
+    document.getElementById(
+      "hasilOpnameTable"
+    ).innerHTML =
+      "";
+
+
+  } catch (error) {
+
+    alert(
+      "Gagal menghapus:\n" +
+      error.message
+    );
+
+  }
+
+}
+
+
+/* =================================================
+   ENTER = CARI
+================================================= */
+
+document
+  .getElementById(
+    "barcode"
+  )
+  .addEventListener(
+    "keydown",
+    function(e) {
+
+      if (
+        e.key === "Enter"
+      ) {
+
+        e.preventDefault();
+
+        cariBarang();
+
+      }
+
+    }
+  );
+
+
+/* =================================================
+   ESCAPE HTML
+================================================= */
+
+function escapeHtml(
+  value
+) {
+
+  return String(
+    value == null
+      ? ""
+      : value
+  )
+
+  .replace(
+    /&/g,
+    "&amp;"
+  )
+
+  .replace(
+    /</g,
+    "&lt;"
+  )
+
+  .replace(
+    />/g,
+    "&gt;"
+  )
+
+  .replace(
+    /"/g,
+    "&quot;"
+  )
+
+  .replace(
+    /'/g,
+    "&#039;"
+  );
+
 }
 
 </script>
 
+<!-- =====================================================
+     BRIDGE GITHUB → APPS SCRIPT
+====================================================== -->
+
+<iframe
+  id="appsScriptBridge"
+  src="https://script.google.com/macros/s/AKfycbxK_54TKlD52bSvHw05jTCGx4PQI7BR9oJMXtMzhW41pphOVXgJrjZErQkmfNH0Nhs/exec"
+  style="
+    width:0;
+    height:0;
+    border:0;
+    position:absolute;
+    left:-9999px;
+    visibility:hidden;
+  "
+></iframe>
+
+
+<script>
+
+const APPS_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbxK_54TKlD52bSvHw05jTCGx4PQI7BR9oJMXtMzhW41pphOVXgJrjZErQkmfNH0Nhs/exec";
+
+
+let requestCounter = 0;
+
+const requestCallbacks = {};
+
+
+/* =====================================================
+   SERVER REQUEST
+   GitHub → iframe Apps Script
+===================================================== */
+
+function serverRequest(data) {
+
+  return new Promise(function(resolve, reject) {
+
+    const requestId =
+      "REQ_" +
+      Date.now() +
+      "_" +
+      (++requestCounter);
+
+
+    requestCallbacks[requestId] = {
+      resolve: resolve,
+      reject: reject
+    };
+
+
+    const iframe =
+      document.getElementById(
+        "appsScriptBridge"
+      );
+
+
+    if (!iframe) {
+
+      reject(
+        new Error(
+          "Apps Script Bridge tidak ditemukan."
+        )
+      );
+
+      return;
+    }
+
+
+    iframe.contentWindow.postMessage(
+      {
+        type: "GITHUB_REQUEST",
+        requestId: requestId,
+        data: data
+      },
+      "*"
+    );
+
+
+    setTimeout(function() {
+
+      if (
+        requestCallbacks[requestId]
+      ) {
+
+        delete requestCallbacks[
+          requestId
+        ];
+
+        reject(
+          new Error(
+            "Koneksi ke server Apps Script timeout."
+          )
+        );
+      }
+
+    }, 30000);
+
+  });
+
+}
+
+
+/* =====================================================
+   TERIMA RESPONSE DARI APPS SCRIPT
+===================================================== */
+
+window.addEventListener(
+  "message",
+  function(event) {
+
+    if (!event.data) {
+      return;
+    }
+
+
+    if (
+      event.data.type !==
+      "GITHUB_RESPONSE"
+    ) {
+      return;
+    }
+
+
+    const requestId =
+      event.data.requestId;
+
+
+    const callback =
+      requestCallbacks[
+        requestId
+      ];
+
+
+    if (!callback) {
+      return;
+    }
+
+
+    delete requestCallbacks[
+      requestId
+    ];
+
+
+    if (
+      event.data.success
+    ) {
+
+      callback.resolve(
+        event.data.data
+      );
+
+    } else {
+
+      callback.reject(
+        new Error(
+          event.data.error ||
+          "Terjadi kesalahan pada server."
+        )
+      );
+
+    }
+
+  }
+);
+
+</script>
 </body>
+
 </html>
