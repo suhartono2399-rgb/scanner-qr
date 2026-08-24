@@ -5,10 +5,8 @@
 
 <meta charset="UTF-8">
 
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1"
->
+<meta name="viewport"
+content="width=device-width, initial-scale=1">
 
 <title>LUCKY GROUP - STOK OPNAME</title>
 
@@ -16,18 +14,18 @@
 
 <style>
 
+/* =================================================
+   DASAR
+================================================== */
+
 * {
   box-sizing: border-box;
 }
 
 body {
-
   font-family: Arial, sans-serif;
-
   margin: 0;
-
   padding: 20px 12px 35px;
-
   background:
     linear-gradient(
       135deg,
@@ -35,33 +33,26 @@ body {
       #f5f7f5 45%,
       #e3f2fd 100%
     );
-
   color: #263238;
-
 }
 
 .box {
-
   width: 100%;
-
-  max-width: 700px;
-
+  max-width: 620px;
   margin: auto;
-
-  background: #fff;
-
+  background: #ffffff;
   border-radius: 18px;
-
   box-shadow:
-    0 8px 30px
-    rgba(0,0,0,.10);
-
+    0 8px 30px rgba(0,0,0,0.10);
   overflow: hidden;
-
 }
 
-.header {
 
+/* =================================================
+   HEADER
+================================================== */
+
+.header {
   background:
     linear-gradient(
       135deg,
@@ -69,546 +60,458 @@ body {
       #087f4d 55%,
       #0a6843
     );
-
   color: white;
-
   text-align: center;
-
   padding: 25px 18px 22px;
+  position: relative;
+}
 
+.header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background:
+    linear-gradient(
+      90deg,
+      #ffd54f,
+      #ffca28,
+      #ffd54f
+    );
 }
 
 .logo {
-
   font-size: 30px;
-
   font-weight: 900;
-
   letter-spacing: 2px;
-
+  line-height: 1.1;
+  text-shadow:
+    0 2px 3px rgba(0,0,0,0.25);
 }
 
 .judul {
-
   margin-top: 7px;
-
   font-size: 20px;
-
   font-weight: 800;
-
   letter-spacing: 3px;
-
 }
 
 .subjudul {
-
   margin-top: 7px;
-
   font-size: 12px;
-
-  opacity: .9;
-
+  opacity: 0.90;
   letter-spacing: 1.5px;
-
 }
 
-.content {
 
-  padding: 20px;
-
-}
+/* =================================================
+   INFO AKUN
+================================================== */
 
 .akun-box {
-
   margin: 16px 20px 0;
-
   padding: 12px 14px;
-
   border-radius: 10px;
-
   background: #f1f8e9;
-
   border: 1px solid #c8e6c9;
-
 }
 
 .akun-nama {
-
   font-size: 14px;
-
   font-weight: 800;
-
   color: #2e7d32;
-
 }
 
 .akun-role {
-
   margin-top: 4px;
-
   font-size: 12px;
-
   color: #607d8b;
-
 }
 
+
+/* =================================================
+   CONTENT
+================================================== */
+
+.content {
+  padding: 20px;
+}
+
+
+/* =================================================
+   SECTION
+================================================== */
+
 .section {
-
   margin-bottom: 18px;
-
 }
 
 .section-title {
-
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 14px;
-
   font-weight: 800;
-
   color: #0b5d3b;
-
   margin-bottom: 8px;
-
 }
+
+.section-title::before {
+  content: "";
+  width: 4px;
+  height: 18px;
+  border-radius: 5px;
+  background: #0b5d3b;
+}
+
+
+/* =================================================
+   LABEL
+================================================== */
 
 label {
-
   display: block;
-
   font-weight: 800;
-
   font-size: 13px;
-
   color: #37474f;
-
   margin-top: 13px;
-
 }
+
+
+/* =================================================
+   INPUT SELECT
+================================================== */
 
 select,
 input,
 button {
-
   width: 100%;
-
   padding: 13px;
-
   margin-top: 7px;
-
   margin-bottom: 12px;
-
   font-size: 16px;
-
   border-radius: 9px;
-
 }
 
 select,
 input {
-
   border: 1px solid #cfd8dc;
-
-  background: white;
-
+  background: #ffffff;
   color: #263238;
-
+  outline: none;
 }
 
+select:focus,
+input:focus {
+  border-color: #0b7a4b;
+  box-shadow:
+    0 0 0 3px rgba(11,122,75,0.10);
+}
+
+
+/* =================================================
+   BUTTON
+================================================== */
+
 button {
-
   border: none;
-
   background:
     linear-gradient(
       135deg,
       #1976d2,
       #1565c0
     );
-
   color: white;
-
   font-weight: 800;
-
   cursor: pointer;
+  box-shadow:
+    0 3px 8px rgba(25,118,210,0.22);
+  transition: 0.15s;
+}
 
+button:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 5px 12px rgba(25,118,210,0.25);
+}
+
+button:active {
+  transform: translateY(0);
 }
 
 button:disabled {
-
-  opacity: .6;
-
+  opacity: 0.60;
   cursor: not-allowed;
-
+  transform: none;
 }
 
-.import-box {
 
+/* =================================================
+   IMPORT BOX
+================================================== */
+
+.import-box {
   background:
     linear-gradient(
       135deg,
       #fff8e1,
       #fffdf4
     );
-
   border: 1px solid #ffe082;
-
   padding: 16px;
-
   border-radius: 12px;
-
   margin: 18px 0;
+}
 
+.import-box h3 {
+  margin: 0 0 8px;
+  color: #8a5a00;
+  font-size: 16px;
+}
+
+.import-box p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #5d5140;
+  margin: 5px 0 12px;
 }
 
 .import-button {
-
   background:
     linear-gradient(
       135deg,
       #388e3c,
       #2e7d32
     );
-
+  box-shadow:
+    0 3px 8px rgba(46,125,50,0.20);
 }
 
-.scanner-button {
 
+/* =================================================
+   SCANNER
+================================================== */
+
+.scanner-button {
   background:
     linear-gradient(
       135deg,
       #6a1b9a,
       #8e24aa
     );
-
+  box-shadow:
+    0 3px 8px rgba(106,27,154,0.20);
 }
 
 #reader {
-
   width: 100%;
-
   margin-top: 8px;
-
   overflow: hidden;
-
   border-radius: 10px;
-
 }
 
+
+/* =================================================
+   SARAN PENCARIAN
+================================================== */
+
 .saran {
-
   border: 1px solid #dfe5e8;
-
   border-radius: 9px;
-
   overflow: hidden;
-
   background: white;
-
+  margin-bottom: 8px;
 }
 
 .item {
-
   padding: 12px;
-
-  border-bottom: 1px solid #eee;
-
+  border-bottom: 1px solid #eeeeee;
   cursor: pointer;
+}
 
+.item:last-child {
+  border-bottom: none;
+}
+
+.item:hover {
+  background: #f5f9f7;
 }
 
 .item b {
-
   display: block;
-
+  color: #263238;
   margin-bottom: 4px;
-
 }
 
 .item small {
-
   color: #607d8b;
-
 }
 
+
+/* =================================================
+   HASIL BARANG
+================================================== */
+
 .hasil {
-
   display: none;
-
   margin-top: 18px;
-
   padding: 17px;
-
   background:
     linear-gradient(
       135deg,
       #f1f8ff,
       #f8fbff
     );
-
   border: 1px solid #bbdefb;
-
   border-radius: 12px;
+}
 
+.hasil-title {
+  font-weight: 800;
+  color: #1565c0;
+  font-size: 15px;
+  margin-bottom: 14px;
 }
 
 .info-row {
-
   display: flex;
-
   justify-content: space-between;
-
   gap: 12px;
-
   padding: 9px 0;
-
   border-bottom: 1px solid #e3f2fd;
+  font-size: 14px;
+}
 
+.info-row:last-child {
+  border-bottom: none;
 }
 
 .info-label {
-
   color: #607d8b;
-
   font-weight: 700;
-
 }
 
 .info-value {
-
   text-align: right;
-
   font-weight: 800;
-
+  color: #263238;
 }
 
+
+/* =================================================
+   STOK OPNAME
+================================================== */
+
 .opname {
-
   display: none;
-
   margin-top: 20px;
-
   padding: 18px;
-
   border-radius: 12px;
-
   border: 1px solid #c8e6c9;
-
   background:
     linear-gradient(
       135deg,
       #f1f8e9,
       #fafff7
     );
-
 }
 
-.save-button {
+.opname h3 {
+  margin: 0 0 14px;
+  color: #2e7d32;
+  font-size: 17px;
+}
 
+.opname p {
+  margin: 7px 0;
+  font-size: 14px;
+}
+
+.opname .save-button {
   background:
     linear-gradient(
       135deg,
       #0b7a4b,
       #0a6843
     );
-
 }
 
-.result-box {
 
-  margin-top: 20px;
+/* =================================================
+   PESAN
+================================================== */
 
-  padding: 16px;
-
-  border-radius: 12px;
-
-  background: #fafafa;
-
-  border: 1px solid #ddd;
-
-}
-
-.status {
-
+.pesan {
   margin-top: 10px;
-
-  padding: 10px;
-
-  border-radius: 8px;
-
-  line-height: 1.5;
-
+  padding: 8px 0;
+  font-weight: 700;
   font-size: 14px;
-
+  line-height: 1.5;
 }
 
-.error {
 
-  background: #ffebee;
-
-  color: #c62828;
-
-}
-
-.success {
-
-  background: #e8f5e9;
-
-  color: #2e7d32;
-
-}
-
-.warning {
-
-  background: #fff8e1;
-
-  color: #8a5a00;
-
-}
+/* =================================================
+   STATUS LOGIN
+================================================== */
 
 .status-login {
-
+  display: none;
   margin: 20px;
-
   padding: 18px;
-
   border-radius: 12px;
-
   text-align: center;
-
   font-weight: 700;
+  line-height: 1.5;
+}
 
+.status-login.loading {
+  display: block;
   background: #f5f5f5;
-
+  border: 1px solid #e0e0e0;
   color: #607d8b;
-
 }
 
-.hidden {
-
-  display: none !important;
-
+.status-login.error {
+  display: block;
+  background: #ffebee;
+  border: 1px solid #ffcdd2;
+  color: #c62828;
 }
 
-.table-wrap {
 
-  overflow-x: auto;
-
-  margin-top: 15px;
-
-}
-
-table {
-
-  width: 100%;
-
-  border-collapse: collapse;
-
-  font-size: 13px;
-
-}
-
-th,
-td {
-
-  border: 1px solid #ddd;
-
-  padding: 8px;
-
-  white-space: nowrap;
-
-}
-
-th {
-
-  background: #eeeeee;
-
-}
-
-.danger {
-
-  background:
-    linear-gradient(
-      135deg,
-      #d32f2f,
-      #b71c1c
-    );
-
-}
-
-.download {
-
-  background:
-    linear-gradient(
-      135deg,
-      #388e3c,
-      #2e7d32
-    );
-
-}
-
-.secondary {
-
-  background:
-    linear-gradient(
-      135deg,
-      #607d8b,
-      #455a64
-    );
-
-}
+/* =================================================
+   FOOTER
+================================================== */
 
 .footer {
-
   text-align: center;
-
   padding: 17px 10px 20px;
-
-  border-top: 1px solid #eee;
-
+  border-top: 1px solid #eeeeee;
   background: #fafafa;
-
 }
 
 .footer-main {
-
   font-size: 12px;
-
   font-weight: 800;
-
   color: #0b5d3b;
-
+  letter-spacing: 0.5px;
 }
 
 .footer-version {
-
   margin-top: 4px;
-
   font-size: 10px;
-
   color: #78909c;
-
+  letter-spacing: 0.8px;
 }
 
-#serverFrame {
 
-  position: fixed;
+/* =================================================
+   MOBILE
+================================================== */
 
-  width: 1px;
-
-  height: 1px;
-
-  left: -100px;
-
-  top: -100px;
-
-  opacity: 0;
-
-  border: 0;
-
-  pointer-events: none;
-
-}
-
-@media(max-width:480px) {
+@media (max-width: 480px) {
 
   body {
     padding: 0;
@@ -623,6 +526,23 @@ th {
     padding: 16px;
   }
 
+  .logo {
+    font-size: 27px;
+  }
+
+  .judul {
+    font-size: 18px;
+  }
+
+  .info-row {
+    font-size: 13px;
+  }
+
+  .akun-box {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
 }
 
 </style>
@@ -632,9 +552,12 @@ th {
 
 <body>
 
-
 <div class="box">
 
+
+<!-- =================================================
+     HEADER
+================================================== -->
 
 <div class="header">
 
@@ -653,18 +576,27 @@ th {
 </div>
 
 
+<!-- =================================================
+     STATUS LOGIN
+================================================== -->
+
 <div
   id="statusLogin"
-  class="status-login">
+  class="status-login loading">
 
   ⏳ Memeriksa akun Google...
 
 </div>
 
 
+<!-- =================================================
+     INFO AKUN
+================================================== -->
+
 <div
   id="akunBox"
-  class="akun-box hidden">
+  class="akun-box"
+  style="display:none;">
 
   <div
     id="akunNama"
@@ -681,10 +613,13 @@ th {
 
 <div
   id="appContent"
-  class="content hidden">
+  class="content"
+  style="display:none;">
 
 
-<!-- CABANG -->
+<!-- =================================================
+     CABANG
+================================================== -->
 
 <div class="section">
 
@@ -705,20 +640,23 @@ th {
 </div>
 
 
-<!-- IMPORT -->
+<!-- =================================================
+     IMPORT EXCEL
+     HANYA ADMIN / SUPER ADMIN
+================================================== -->
 
 <div
   id="importBox"
-  class="import-box hidden">
+  class="import-box"
+  style="display:none;">
 
   <h3>
     📥 IMPORT DATA STOK
   </h3>
 
   <p>
-    Pilih cabang lalu masukkan
-    file Excel hasil menu
-    <b>Posisi Stok</b>.
+    Pilih cabang lalu masukkan file Excel
+    hasil menu <b>Posisi Stok</b>.
   </p>
 
   <input
@@ -736,17 +674,21 @@ th {
 
   <div
     id="pesanImport"
-    class="status">
+    class="pesan">
   </div>
 
 </div>
 
 
-<!-- PETUGAS ADMIN -->
+<!-- =================================================
+     PETUGAS
+     UNTUK ADMIN / SUPER ADMIN
+================================================== -->
 
 <div
   id="petugasSection"
-  class="section hidden">
+  class="section"
+  style="display:none;">
 
   <div class="section-title">
     PETUGAS
@@ -765,11 +707,14 @@ th {
 </div>
 
 
-<!-- PETUGAS LOGIN -->
+<!-- =================================================
+     INFO PETUGAS LOGIN
+================================================== -->
 
 <div
   id="petugasLoginSection"
-  class="section hidden">
+  class="section"
+  style="display:none;">
 
   <div class="section-title">
     PETUGAS AKTIF
@@ -785,7 +730,9 @@ th {
 </div>
 
 
-<!-- SCANNER -->
+<!-- =================================================
+     SCANNER
+================================================== -->
 
 <div class="section">
 
@@ -806,7 +753,9 @@ th {
 </div>
 
 
-<!-- CARI -->
+<!-- =================================================
+     CARI
+================================================== -->
 
 <div class="section">
 
@@ -838,19 +787,17 @@ th {
 </div>
 
 
-<!-- DATA BARANG -->
+<!-- =================================================
+     HASIL BARANG
+================================================== -->
 
 <div
   id="hasil"
   class="hasil">
 
-  <div
-    class="section-title">
-
+  <div class="hasil-title">
     📦 DATA BARANG
-
   </div>
-
 
   <div class="info-row">
 
@@ -865,7 +812,6 @@ th {
 
   </div>
 
-
   <div class="info-row">
 
     <div class="info-label">
@@ -879,7 +825,6 @@ th {
 
   </div>
 
-
   <div class="info-row">
 
     <div class="info-label">
@@ -892,7 +837,6 @@ th {
     </div>
 
   </div>
-
 
   <div class="info-row">
 
@@ -910,7 +854,9 @@ th {
 </div>
 
 
-<!-- OPNAME -->
+<!-- =================================================
+     STOCK OPNAME
+================================================== -->
 
 <div
   id="opname"
@@ -952,85 +898,65 @@ th {
 
   <div
     id="pesan"
-    class="status">
+    class="pesan">
   </div>
 
 </div>
 
 
-<!-- HASIL OPNAME -->
+
+<!-- =================================================
+     HASIL OPNAME
+     ADMIN / SUPER ADMIN
+================================================== -->
 
 <div
-  id="hasilBox"
-  class="result-box">
+  id="hasilOpnameSection"
+  class="section"
+  style="display:none;">
 
+  <div class="section-title">
+    📋 HASIL STOCK OPNAME
+  </div>
 
-<div class="section-title">
+  <label>TANGGAL OPNAME</label>
 
-  📋 HASIL OPNAME
+  <input
+    type="date"
+    id="tanggalHasilOpname">
+
+  <button onclick="lihatHasilOpname()">
+    🔎 LIHAT HASIL OPNAME
+  </button>
+
+  <button onclick="downloadHasilOpname()">
+    ⬇️ DOWNLOAD HASIL OPNAME
+  </button>
+
+  <button
+    onclick="hapusHasilOpnameDenganTanggal()"
+    style="background:#c62828;">
+    🗑️ HAPUS HASIL OPNAME
+  </button>
+
+  <div
+    id="pesanHasilOpname"
+    class="pesan">
+  </div>
+
+  <div
+    id="hasilOpnameTable"
+    style="overflow-x:auto;margin-top:15px;">
+  </div>
+
+</div>
 
 </div>
 
 
-<label>
-  TANGGAL
-</label>
-
-<input
-  type="date"
-  id="tanggalHasil">
-
-
-<label>
-  CABANG
-</label>
-
-<select id="cabangHasil">
-
-  <option value="">
-    -- Semua Cabang --
-  </option>
-
-</select>
-
-
-<button
-  onclick="lihatHasil()">
-
-  📋 LIHAT HASIL OPNAME
-
-</button>
-
-
-<button
-  class="download"
-  onclick="downloadHasil()">
-
-  ⬇️ DOWNLOAD HASIL OPNAME
-
-</button>
-
-
-<button
-  class="danger"
-  onclick="hapusHasil()">
-
-  🗑️ HAPUS HASIL OPNAME
-
-</button>
-
-
-<div
-  id="hasilOpnameTable"
-  class="table-wrap">
-</div>
-
-
-</div>
-
-
-</div>
-
+<!-- =================================================
+     FOOTER
+================================================== -->
 
 <div class="footer">
 
@@ -1039,7 +965,7 @@ th {
   </div>
 
   <div class="footer-version">
-    V01.1226.2
+    V01.1226.1
   </div>
 
 </div>
@@ -1048,197 +974,22 @@ th {
 </div>
 
 
-<!-- =================================================
-     APPS SCRIPT SEBAGAI SERVER BACKGROUND
-================================================== -->
-
-<iframe
-  id="serverFrame"
-  src="GANTI_DENGAN_URL_APPS_SCRIPT_ANDA"
-  allow="camera">
-</iframe>
-
-
 <script>
 
-
 /* =================================================
-   VARIABEL
-================================================= */
+   VARIABEL GLOBAL
+================================================== */
 
 let scanner = null;
 
-let timer = null;
-
-let requestCounter = 0;
-
-let pendingRequests = {};
-
-let hasilTerakhir = [];
-
 let aksesSaya = null;
 
-
-/* =================================================
-   FRAME SERVER
-================================================= */
-
-const serverFrame =
-  document.getElementById(
-    "serverFrame"
-  );
-
-
-/* =================================================
-   REQUEST KE APPS SCRIPT
-================================================= */
-
-function serverRequest(
-  data
-) {
-
-  return new Promise(
-    function(resolve, reject) {
-
-      const requestId =
-        "REQ-" +
-        Date.now() +
-        "-" +
-        (++requestCounter);
-
-
-      pendingRequests[
-        requestId
-      ] = {
-
-        resolve:
-          resolve,
-
-        reject:
-          reject
-
-      };
-
-
-      serverFrame
-        .contentWindow
-        .postMessage(
-
-          {
-
-            type:
-              "GITHUB_REQUEST",
-
-            requestId:
-              requestId,
-
-            data:
-              data
-
-          },
-
-          "*"
-
-        );
-
-
-      setTimeout(
-        function() {
-
-          if (
-            pendingRequests[
-              requestId
-            ]
-          ) {
-
-            delete pendingRequests[
-              requestId
-            ];
-
-            reject(
-              new Error(
-                "Server tidak merespons."
-              )
-            );
-
-          }
-
-        },
-        30000
-      );
-
-    }
-  );
-
-}
-
-
-/* =================================================
-   RESPONSE SERVER
-================================================= */
-
-window.addEventListener(
-  "message",
-  function(event) {
-
-    const data =
-      event.data;
-
-    if (
-      !data ||
-      data.type !==
-        "GITHUB_RESPONSE"
-    ) {
-
-      return;
-
-    }
-
-
-    const pending =
-      pendingRequests[
-        data.requestId
-      ];
-
-
-    if (!pending) {
-
-      return;
-
-    }
-
-
-    delete pendingRequests[
-      data.requestId
-    ];
-
-
-    if (
-      data.success
-    ) {
-
-      pending.resolve(
-        data.data
-      );
-
-    } else {
-
-      pending.reject(
-        new Error(
-          data.error ||
-          "Terjadi kesalahan server."
-        )
-      );
-
-    }
-
-  }
-);
+let timer = null;
 
 
 /* =================================================
    LOAD APLIKASI
-================================================= */
+================================================== */
 
 document.addEventListener(
   "DOMContentLoaded",
@@ -1246,82 +997,56 @@ document.addEventListener(
 );
 
 
+/* =================================================
+   CEK AKUN
+================================================== */
+
 async function loadAplikasi() {
 
   try {
 
     const akses =
       await serverRequest({
-
-        type:
-          "GET_INFO_AKUN"
-
+        type: "GET_INFO_AKUN"
       });
 
-
-    aksesSaya =
-      akses;
-
+    aksesSaya = akses;
 
     if (
       !akses ||
-      akses.status !==
-        "DIIZINKAN"
+      akses.status !== "DIIZINKAN"
     ) {
 
-      tampilkanDitolak(
-        akses
-      );
-
+      tampilkanDitolak(akses);
       return;
 
     }
 
-
     document.getElementById(
       "statusLogin"
-    ).classList.add(
-      "hidden"
-    );
-
+    ).style.display = "none";
 
     document.getElementById(
       "appContent"
-    ).classList.remove(
-      "hidden"
-    );
-
+    ).style.display = "block";
 
     document.getElementById(
       "akunBox"
-    ).classList.remove(
-      "hidden"
-    );
-
+    ).style.display = "block";
 
     document.getElementById(
       "akunNama"
     ).textContent =
       "👤 " +
-      (
-        akses.nama ||
-        akses.email
-      );
-
+      (akses.nama || akses.email);
 
     document.getElementById(
       "akunRole"
     ).textContent =
       "Hak akses: " +
-      formatRole(
-        akses.role
-      );
+      formatRole(akses.role);
 
-
-    aturTampilanRole(
-      akses
-    );
-
+    aturTampilanBerdasarkanRole(akses);
 
   } catch (error) {
 
@@ -1335,48 +1060,38 @@ async function loadAplikasi() {
 
 
 /* =================================================
-   ROLE
-================================================= */
+   FORMAT ROLE
+================================================== */
 
-function formatRole(
-  role
-) {
+function formatRole(role) {
 
   role =
-    String(
-      role || ""
-    ).toUpperCase();
-
+    String(role || "")
+      .toUpperCase();
 
   if (
-    role ===
-    "SUPER_ADMIN"
+    role === "SUPER_ADMIN"
   ) {
 
     return "SUPER ADMIN";
 
   }
 
-
   if (
-    role ===
-    "ADMIN"
+    role === "ADMIN"
   ) {
 
     return "ADMIN";
 
   }
 
-
   if (
-    role ===
-    "PETUGAS"
+    role === "PETUGAS"
   ) {
 
     return "PETUGAS";
 
   }
-
 
   return role;
 
@@ -1384,10 +1099,10 @@ function formatRole(
 
 
 /* =================================================
-   TAMPILAN ROLE
-================================================= */
+   TAMPILAN BERDASARKAN ROLE
+================================================== */
 
-async function aturTampilanRole(
+function aturTampilanBerdasarkanRole(
   akses
 ) {
 
@@ -1397,44 +1112,63 @@ async function aturTampilanRole(
     ).toUpperCase();
 
 
-  if (
-    role === "ADMIN" ||
-    role === "SUPER_ADMIN"
-  ) {
-
+  const importBox =
     document.getElementById(
       "importBox"
-    ).classList.remove(
-      "hidden"
     );
 
-
+  const petugasSection =
     document.getElementById(
       "petugasSection"
-    ).classList.remove(
-      "hidden"
+    );
+
+  const petugasLoginSection =
+    document.getElementById(
+      "petugasLoginSection"
     );
 
 
-    await loadCabang();
+  /* -----------------------------------------------
+     SUPER ADMIN / ADMIN
+  ------------------------------------------------ */
+
+  if (
+    role === "SUPER_ADMIN" ||
+    role === "ADMIN"
+  ) {
+
+    importBox.style.display =
+      "block";
+
+    petugasSection.style.display =
+      "block";
+
+    petugasLoginSection.style.display =
+      "none";
 
 
-    isiCabangHasil();
+    loadCabang();
 
     return;
-
   }
 
+
+  /* -----------------------------------------------
+     PETUGAS
+  ------------------------------------------------ */
 
   if (
     role === "PETUGAS"
   ) {
 
-    document.getElementById(
-      "petugasLoginSection"
-    ).classList.remove(
-      "hidden"
-    );
+    importBox.style.display =
+      "none";
+
+    petugasSection.style.display =
+      "none";
+
+    petugasLoginSection.style.display =
+      "block";
 
 
     document.getElementById(
@@ -1443,13 +1177,9 @@ async function aturTampilanRole(
       akses.nama || "";
 
 
-    await loadCabang();
-
-
-    isiCabangHasil();
+    loadCabangPetugas();
 
     return;
-
   }
 
 
@@ -1461,8 +1191,8 @@ async function aturTampilanRole(
 
 
 /* =================================================
-   DITOLAK
-================================================= */
+   TAMPILKAN DITOLAK
+================================================== */
 
 function tampilkanDitolak(
   akses
@@ -1473,14 +1203,15 @@ function tampilkanDitolak(
       "statusLogin"
     );
 
-
   status.className =
     "status-login error";
 
+  status.style.display =
+    "block";
 
-  status.classList.remove(
-    "hidden"
-  );
+
+  let pesan =
+    "❌ AKSES DITOLAK.";
 
 
   if (
@@ -1489,30 +1220,33 @@ function tampilkanDitolak(
       "TIDAK_TERIDENTIFIKASI"
   ) {
 
-    status.innerHTML =
+    pesan =
       "❌ Akun Google tidak dapat diidentifikasi.<br>" +
-      "Pastikan menggunakan akun Google yang terdaftar.";
+      "Pastikan Anda membuka aplikasi menggunakan akun Google yang terdaftar.";
 
   } else {
 
-    status.innerHTML =
+    pesan =
       "❌ Akun Google Anda belum memiliki akses ke aplikasi.";
 
   }
 
 
+  status.innerHTML =
+    pesan;
+
+
   document.getElementById(
     "appContent"
-  ).classList.add(
-    "hidden"
-  );
+  ).style.display =
+    "none";
 
 }
 
 
 /* =================================================
-   ERROR LOGIN
-================================================= */
+   TAMPILKAN ERROR LOGIN
+================================================== */
 
 function tampilkanErrorLogin(
   pesan
@@ -1523,163 +1257,151 @@ function tampilkanErrorLogin(
       "statusLogin"
     );
 
-
   status.className =
     "status-login error";
 
-
-  status.classList.remove(
-    "hidden"
-  );
-
+  status.style.display =
+    "block";
 
   status.innerHTML =
     "❌ Gagal memeriksa akun:<br>" +
-    escapeHtml(
-      pesan
-    );
+    pesan;
 
 }
 
 
 /* =================================================
    LOAD CABANG
-================================================= */
+   ADMIN / SUPER ADMIN
+================================================== */
 
-async function loadCabang() {
+function loadCabang() {
 
   const select =
     document.getElementById(
       "cabang"
     );
 
-
   select.innerHTML =
     '<option value="">-- Pilih Cabang --</option>';
 
 
-  try {
+  serverRequest({
+    type: "GET_CABANG"
+  })
+  .then(function(list) {
 
-    const list =
-      await serverRequest({
+    list.forEach(function(item) {
 
-        type:
-          "GET_CABANG"
+      const option =
+        document.createElement("option");
 
-      });
+      option.value = item.nama;
+      option.textContent = item.nama;
 
+      select.appendChild(option);
 
-    list.forEach(
-      function(item) {
+    });
 
-        const option =
-          document.createElement(
-            "option"
-          );
-
-
-        option.value =
-          item.nama;
-
-
-        option.textContent =
-          item.nama;
-
-
-        select.appendChild(
-          option
-        );
-
-      }
-    );
-
-
-  } catch (error) {
+  })
+  .catch(function(e) {
 
     alert(
       "Gagal mengambil cabang: " +
-      error.message
+      e.message
     );
 
-  }
+  });
+
 
 }
 
 
 /* =================================================
-   CABANG HASIL
-================================================= */
+   LOAD CABANG PETUGAS
+================================================== */
 
-async function isiCabangHasil() {
+function loadCabangPetugas() {
 
-  const source =
+  const select =
     document.getElementById(
       "cabang"
     );
 
-  const target =
-    document.getElementById(
-      "cabangHasil"
+  select.innerHTML =
+    '<option value="">Memuat cabang tugas...</option>';
+
+  select.disabled =
+    true;
+
+
+  /*
+   * Code.gs saat ini belum memiliki
+   * fungsi getCabangPetugas().
+   *
+   * Karena itu untuk sementara kita
+   * mengambil seluruh cabang dari server.
+   *
+   * Pengamanan sebenarnya tetap dilakukan
+   * oleh simpanOpname() melalui
+   * cekPenugasanPetugas().
+   *
+   * Setelah fungsi pengelolaan penugasan
+   * selesai, fungsi ini akan kita kunci
+   * hanya ke cabang penugasan akun tersebut.
+   */
+
+  serverRequest({
+    type: "GET_CABANG"
+  })
+  .then(function(list) {
+
+    select.innerHTML =
+      '<option value="">-- Pilih Cabang Tugas --</option>';
+
+    list.forEach(function(item) {
+
+      const option =
+        document.createElement("option");
+
+      option.value = item.nama;
+      option.textContent = item.nama;
+
+      select.appendChild(option);
+
+    });
+
+    select.disabled = false;
+
+  })
+  .catch(function(e) {
+
+    select.innerHTML =
+      '<option value="">Gagal mengambil cabang</option>';
+
+    alert(
+      "Gagal mengambil cabang: " +
+      e.message
     );
 
-
-  target.innerHTML =
-    '<option value="">-- Semua Cabang --</option>';
-
-
-  Array.from(
-    source.options
-  ).forEach(
-    function(option) {
-
-      if (
-        option.value
-      ) {
-
-        const copy =
-          document.createElement(
-            "option"
-          );
-
-
-        copy.value =
-          option.value;
-
-
-        copy.textContent =
-          option.textContent;
-
-
-        target.appendChild(
-          copy
-        );
-
-      }
-
-    }
-  );
+  });
 
 }
 
 
 /* =================================================
    CABANG → PETUGAS
-================================================= */
+   ADMIN / SUPER ADMIN
+================================================== */
 
 document
-  .getElementById(
-    "cabang"
-  )
+  .getElementById("cabang")
   .addEventListener(
     "change",
-    async function() {
-
-      await isiCabangHasil();
-
+    function() {
 
       const cabang =
         this.value;
-
 
       const petugas =
         document.getElementById(
@@ -1687,8 +1409,12 @@ document
         );
 
 
-      if (!petugas) {
+      if (
+        !petugas
+      ) {
+
         return;
+
       }
 
 
@@ -1697,57 +1423,40 @@ document
 
 
       if (!cabang) {
+
         return;
+
       }
 
 
-      try {
+      serverRequest({
+        type: "GET_PETUGAS",
+        cabang: cabang
+      })
+      .then(function(list) {
 
-        const list =
-          await serverRequest({
+        list.forEach(function(nama) {
 
-            type:
-              "GET_PETUGAS",
+          const option =
+            document.createElement("option");
 
-            cabang:
-              cabang
+          option.value = nama;
+          option.textContent = nama;
 
-          });
+          petugas.appendChild(option);
 
+        });
 
-        list.forEach(
-          function(nama) {
-
-            const option =
-              document.createElement(
-                "option"
-              );
-
-
-            option.value =
-              nama;
-
-
-            option.textContent =
-              nama;
-
-
-            petugas.appendChild(
-              option
-            );
-
-          }
-        );
-
-
-      } catch (error) {
+      })
+      .catch(function(e) {
 
         alert(
           "Gagal mengambil petugas: " +
-          error.message
+          e.message
         );
 
-      }
+      });
+
 
     }
   );
@@ -1755,9 +1464,10 @@ document
 
 /* =================================================
    IMPORT EXCEL
-================================================= */
+   ADMIN / SUPER ADMIN SAJA
+================================================== */
 
-async function importExcel() {
+function importExcel() {
 
   if (
     !aksesSaya ||
@@ -1768,7 +1478,7 @@ async function importExcel() {
   ) {
 
     alert(
-      "Akses ditolak. Import hanya untuk ADMIN / SUPER ADMIN."
+      "Akses ditolak. Import Excel hanya untuk ADMIN / SUPER ADMIN."
     );
 
     return;
@@ -1781,12 +1491,10 @@ async function importExcel() {
       "cabang"
     ).value;
 
-
   const file =
     document.getElementById(
       "fileExcel"
     ).files[0];
-
 
   const pesan =
     document.getElementById(
@@ -1816,127 +1524,60 @@ async function importExcel() {
   }
 
 
-  pesan.className =
-    "status warning";
-
-
   pesan.textContent =
     "⏳ Sedang mengimport data...";
 
 
-  try {
-
-    const base64 =
-      await fileToBase64(
-        file
-      );
+  const reader =
+    new FileReader();
 
 
-    const result =
-      await serverRequest({
+  reader.onload =
+    function(e) {
 
-        type:
-          "IMPORT_EXCEL",
+      const base64 =
+        e.target.result
+          .split(",")[1];
 
-        base64:
-          base64,
 
-        fileName:
-          file.name,
+      serverRequest({
+        type: "IMPORT_EXCEL",
+        base64: base64,
+        fileName: file.name,
+        cabang: cabang
+      })
+      .then(function(result) {
 
-        cabang:
-          cabang
+        pesan.innerHTML =
+          "✅ IMPORT BERHASIL<br>" +
+          "Cabang: <b>" + result.cabang + "</b><br>" +
+          "Jumlah stok: <b>" + result.jumlah + "</b><br>" +
+          "Data barang baru: <b>" + result.jumlahBarang + "</b>";
+
+      })
+      .catch(function(error) {
+
+        pesan.innerHTML =
+          "❌ IMPORT GAGAL:<br>" +
+          error.message;
 
       });
 
 
-    pesan.className =
-      "status success";
+    };
 
 
-    pesan.innerHTML =
-      "✅ IMPORT BERHASIL<br>" +
-
-      "Cabang: <b>" +
-      escapeHtml(
-        result.cabang
-      ) +
-      "</b><br>" +
-
-      "Jumlah stok: <b>" +
-      result.jumlah +
-      "</b><br>" +
-
-      "Data barang baru: <b>" +
-      result.jumlahBarang +
-      "</b>";
-
-
-  } catch (error) {
-
-    pesan.className =
-      "status error";
-
-
-    pesan.innerHTML =
-      "❌ IMPORT GAGAL:<br>" +
-      escapeHtml(
-        error.message
-      );
-
-  }
+  reader.readAsDataURL(file);
 
 }
 
 
 /* =================================================
-   FILE → BASE64
-================================================= */
-
-function fileToBase64(
-  file
-) {
-
-  return new Promise(
-    function(resolve, reject) {
-
-      const reader =
-        new FileReader();
-
-
-      reader.onload =
-        function(e) {
-
-          resolve(
-            e.target.result
-              .split(",")[1]
-          );
-
-        };
-
-
-      reader.onerror =
-        reject;
-
-
-      reader.readAsDataURL(
-        file
-      );
-
-    }
-  );
-
-}
-
-
-/* =================================================
-   AUTOCOMPLETE
-================================================= */
+   AUTOCOMPLETE BARANG
+================================================== */
 
 document
-  .getElementById(
-    "barcode"
-  )
+  .getElementById("barcode")
   .addEventListener(
     "input",
     function() {
@@ -1949,12 +1590,10 @@ document
       const keyword =
         this.value.trim();
 
-
       const cabang =
         document.getElementById(
           "cabang"
         ).value;
-
 
       const saran =
         document.getElementById(
@@ -1977,96 +1616,60 @@ document
 
       timer =
         setTimeout(
-          async function() {
+          function() {
 
-            try {
+            serverRequest({
+              type: "CARI_BARANG_LIST",
+              keyword: keyword,
+              cabang: cabang
+            })
+            .then(function(list) {
 
-              const list =
-                await serverRequest({
+              saran.innerHTML = "";
 
-                  type:
-                    "CARI_BARANG_LIST",
+              list.forEach(function(item) {
 
-                  keyword:
-                    keyword,
+                const div =
+                  document.createElement("div");
 
-                  cabang:
-                    cabang
+                div.className = "item";
 
-                });
+                div.innerHTML =
+                  "<b>" +
+                  escapeHtml(item.nama) +
+                  "</b>" +
+                  "<small>" +
+                  escapeHtml(item.barcode) +
+                  " | " +
+                  escapeHtml(item.merk) +
+                  "</small>";
 
+                div.onclick = function() {
 
-              saran.innerHTML =
-                "";
+                  document.getElementById(
+                    "barcode"
+                  ).value = item.barcode;
 
+                  saran.innerHTML = "";
 
-              list.forEach(
-                function(item) {
+                  cariBarang();
 
-                  const div =
-                    document.createElement(
-                      "div"
-                    );
+                };
 
+                saran.appendChild(div);
 
-                  div.className =
-                    "item";
+              });
 
-
-                  div.innerHTML =
-                    "<b>" +
-                    escapeHtml(
-                      item.nama
-                    ) +
-                    "</b>" +
-
-                    "<small>" +
-                    escapeHtml(
-                      item.barcode
-                    ) +
-                    " | " +
-                    escapeHtml(
-                      item.merk
-                    ) +
-                    "</small>";
-
-
-                  div.onclick =
-                    function() {
-
-                      document.getElementById(
-                        "barcode"
-                      ).value =
-                        item.barcode;
-
-
-                      saran.innerHTML =
-                        "";
-
-
-                      cariBarang();
-
-                    };
-
-
-                  saran.appendChild(
-                    div
-                  );
-
-                }
-              );
-
-
-            } catch (error) {
+            })
+            .catch(function(e) {
 
               saran.innerHTML =
                 "<div class='item'>" +
-                escapeHtml(
-                  error.message
-                ) +
+                escapeHtml(e.message) +
                 "</div>";
 
-            }
+            });
+
 
           },
           300
@@ -2077,13 +1680,52 @@ document
 
 
 /* =================================================
+   ESCAPE HTML
+================================================== */
+
+function escapeHtml(
+  value
+) {
+
+  return String(
+    value || ""
+  )
+  .replace(
+    /&/g,
+    "&amp;"
+  )
+  .replace(
+    /</g,
+    "&lt;"
+  )
+  .replace(
+    />/g,
+    "&gt;"
+  )
+  .replace(
+    /"/g,
+    "&quot;"
+  )
+  .replace(
+    /'/g,
+    "&#039;"
+  );
+
+}
+
+
+/* =================================================
    SCANNER
-================================================= */
+================================================== */
 
 function mulaiScanner() {
 
-  if (scanner) {
+  if (
+    scanner
+  ) {
+
     return;
+
   }
 
 
@@ -2169,15 +1811,14 @@ function mulaiScanner() {
 
 /* =================================================
    CARI BARANG
-================================================= */
+================================================== */
 
-async function cariBarang() {
+function cariBarang() {
 
   const barcode =
     document.getElementById(
       "barcode"
     ).value.trim();
-
 
   const cabang =
     document.getElementById(
@@ -2207,11 +1848,14 @@ async function cariBarang() {
   }
 
 
+  /*
+   * Bersihkan hasil lama
+   */
+
   document.getElementById(
     "hasil"
   ).style.display =
     "none";
-
 
   document.getElementById(
     "opname"
@@ -2219,193 +1863,117 @@ async function cariBarang() {
     "none";
 
 
-  try {
-
-    const data =
-      await serverRequest({
-
-        type:
-          "CEK_BARANG",
-
-        barcode:
-          barcode,
-
-        cabang:
-          cabang
-
-      });
-
+  serverRequest({
+    type: "CEK_BARANG",
+    barcode: barcode,
+    cabang: cabang
+  })
+  .then(function(data) {
 
     if (!data) {
 
-      alert(
-        "Barang tidak ditemukan."
-      );
-
+      alert("Barang tidak ditemukan.");
       return;
 
     }
 
-
-    /*
-     * SAMA SEPERTI SISTEM LAMA:
-     *
-     * HANYA DATA BARANG
-     * YANG DITAMPILKAN.
-     *
-     * STOK SISTEM TIDAK DICARI.
-     */
-
     document.getElementById(
       "hasil"
-    ).style.display =
-      "block";
-
+    ).style.display = "block";
 
     document.getElementById(
       "rBarcode"
-    ).textContent =
-      data.barcode;
-
+    ).textContent = data.barcode;
 
     document.getElementById(
       "rNama"
-    ).textContent =
-      data.nama;
-
+    ).textContent = data.nama;
 
     document.getElementById(
       "rMerk"
-    ).textContent =
-      data.merk;
-
+    ).textContent = data.merk;
 
     document.getElementById(
       "rSatuan"
-    ).textContent =
-      data.satuan;
-
+    ).textContent = data.satuan;
 
     document.getElementById(
       "opname"
-    ).style.display =
-      "block";
-
+    ).style.display = "block";
 
     document.getElementById(
       "oNama"
-    ).textContent =
-      data.nama;
-
+    ).textContent = data.nama;
 
     document.getElementById(
       "oBarcode"
-    ).textContent =
-      data.barcode;
-
+    ).textContent = data.barcode;
 
     document.getElementById(
       "stokFisik"
-    ).value =
-      "";
-
+    ).value = "";
 
     document.getElementById(
       "stokFisik"
-    ).disabled =
-      false;
-
+    ).disabled = false;
 
     document.getElementById(
       "saveButton"
-    ).disabled =
-      false;
-
+    ).disabled = false;
 
     document.getElementById(
       "pesan"
-    ).className =
-      "status";
+    ).textContent = "";
 
+    return serverRequest({
+      type: "CEK_SUDAH_INPUT",
+      cabang: cabang,
+      barcode: data.barcode
+    });
 
-    document.getElementById(
-      "pesan"
-    ).textContent =
-      "";
+  })
+  .then(function(cek) {
 
+    if (!cek) return;
 
-    /*
-     * CEK DOUBLE INPUT
-     * tetap seperti sistem lama.
-     */
-
-    const cek =
-      await serverRequest({
-
-        type:
-          "CEK_SUDAH_INPUT",
-
-        cabang:
-          cabang,
-
-        barcode:
-          data.barcode
-
-      });
-
-
-    if (
-      cek &&
-      cek.sudah
-    ) {
-
-      document.getElementById(
-        "pesan"
-      ).className =
-        "status warning";
-
+    if (cek.sudah) {
 
       document.getElementById(
         "pesan"
       ).innerHTML =
         "⚠️ BARANG SUDAH DIINPUT oleh <b>" +
-        escapeHtml(
-          cek.petugas
-        ) +
+        escapeHtml(cek.petugas) +
         "</b>";
-
 
       document.getElementById(
         "stokFisik"
-      ).disabled =
-        true;
-
+      ).disabled = true;
 
       document.getElementById(
         "saveButton"
-      ).disabled =
-        true;
+      ).disabled = true;
 
     }
 
-
-  } catch (error) {
+  })
+  .catch(function(e) {
 
     alert(
       "Gagal mencari barang: " +
-      error.message
+      e.message
     );
 
-  }
+  });
+
 
 }
 
 
 /* =================================================
-   SIMPAN
-================================================= */
+   SIMPAN STOCK OPNAME
+================================================== */
 
-async function simpan() {
+function simpan() {
 
   const cabang =
     document.getElementById(
@@ -2423,6 +1991,16 @@ async function simpan() {
     document.getElementById(
       "stokFisik"
     ).value;
+
+
+  /*
+   * Untuk PETUGAS:
+   * nama tidak lagi dikirim sebagai
+   * sumber identitas.
+   *
+   * Code.gs mengambil identitas
+   * langsung dari akun Google.
+   */
 
 
   if (!cabang) {
@@ -2473,10 +2051,6 @@ async function simpan() {
     );
 
 
-  pesan.className =
-    "status warning";
-
-
   pesan.textContent =
     "⏳ Menyimpan...";
 
@@ -2485,174 +2059,148 @@ async function simpan() {
     true;
 
 
-  try {
+  serverRequest({
+    type: "SIMPAN_OPNAME",
+    cabang: cabang,
+    barcode: barcode,
+    stokFisik: stokFisik
+  })
+  .then(function(result) {
 
-    /*
-     * PENTING:
-     *
-     * Kita TIDAK mengambil stok sistem
-     * dari browser.
-     *
-     * Server simpanOpname()
-     * yang mengambil stok sistem,
-     * menghitung selisih,
-     * lalu mengembalikan hasil.
-     */
-
-    const result =
-      await serverRequest({
-
-        type:
-          "SIMPAN_OPNAME",
-
-        cabang:
-          cabang,
-
-        barcode:
-          barcode,
-
-        stokFisik:
-          stokFisik
-
-      });
-
-
-    if (
-      result.status ===
-      "SUDAH"
-    ) {
-
-      pesan.className =
-        "status warning";
-
+    if (result.status === "SUDAH") {
 
       pesan.innerHTML =
         "⚠️ Barang sudah diinput oleh <b>" +
-        escapeHtml(
-          result.petugas
-        ) +
+        escapeHtml(result.petugas) +
         "</b>";
-
 
       document.getElementById(
         "stokFisik"
-      ).disabled =
-        true;
+      ).disabled = true;
 
+      saveButton.disabled = true;
 
       return;
 
     }
 
-
-    /*
-     * BARU DI SINI:
-     *
-     * STOK SISTEM
-     * STOK FISIK
-     * SELISIH
-     *
-     * ditampilkan.
-     */
-
-    pesan.className =
-      "status success";
-
-
     pesan.innerHTML =
-
-      "✅ BERHASIL DISIMPAN" +
-
-      "<br><br>" +
-
+      "✅ BERHASIL DISIMPAN<br><br>" +
       "Petugas: <b>" +
-      escapeHtml(
-        result.petugas
-      ) +
-      "</b>" +
-
-      "<br>" +
-
+      escapeHtml(result.petugas) +
+      "</b><br>" +
       "Stok Sistem: <b>" +
       result.stokSistem +
-      "</b>" +
-
-      "<br>" +
-
+      "</b><br>" +
       "Stok Fisik: <b>" +
       result.stokFisik +
-      "</b>" +
-
-      "<br>" +
-
+      "</b><br>" +
       "Selisih: <b>" +
       result.selisih +
       "</b>";
 
-
     document.getElementById(
       "stokFisik"
-    ).disabled =
-      true;
+    ).disabled = true;
 
+    saveButton.disabled = true;
 
-  } catch (error) {
-
-    pesan.className =
-      "status error";
-
+  })
+  .catch(function(error) {
 
     pesan.innerHTML =
       "❌ GAGAL:<br>" +
-      escapeHtml(
-        error.message
-      );
+      escapeHtml(error.message);
 
+    saveButton.disabled = false;
 
-    saveButton.disabled =
-      false;
+  });
 
-  }
 
 }
 
 
 /* =================================================
-   LIHAT HASIL
-================================================= */
+   HASIL OPNAME
+================================================== */
 
-async function lihatHasil() {
+function siapkanTanggalHasilOpname() {
+
+  const input =
+    document.getElementById(
+      "tanggalHasilOpname"
+    );
+
+  if (!input) return;
+
+  const sekarang =
+    new Date();
+
+  const yyyy =
+    sekarang.getFullYear();
+
+  const mm =
+    String(
+      sekarang.getMonth() + 1
+    ).padStart(2, "0");
+
+  const dd =
+    String(
+      sekarang.getDate()
+    ).padStart(2, "0");
+
+  input.value =
+    yyyy + "-" + mm + "-" + dd;
+}
+
+
+function formatAngka(value) {
+
+  return Number(
+    value || 0
+  ).toLocaleString(
+    "id-ID"
+  );
+}
+
+
+async function lihatHasilOpname() {
 
   if (
     !aksesSaya ||
     (
-      aksesSaya.role !==
-        "ADMIN" &&
-      aksesSaya.role !==
-        "SUPER_ADMIN"
+      aksesSaya.role !== "ADMIN" &&
+      aksesSaya.role !== "SUPER_ADMIN"
     )
   ) {
 
     alert(
-      "Fitur hasil opname hanya untuk ADMIN / SUPER ADMIN."
+      "Akses hanya untuk ADMIN / SUPER ADMIN."
     );
 
     return;
 
   }
 
-
   const tanggal =
     document.getElementById(
-      "tanggalHasil"
+      "tanggalHasilOpname"
     ).value;
-
 
   const cabang =
     document.getElementById(
-      "cabangHasil"
+      "cabang"
     ).value;
 
+  const pesan =
+    document.getElementById(
+      "pesanHasilOpname"
+    );
+
+  const table =
+    document.getElementById(
+      "hasilOpnameTable"
+    );
 
   if (!tanggal) {
 
@@ -2664,20 +2212,14 @@ async function lihatHasil() {
 
   }
 
-
-  const table =
-    document.getElementById(
-      "hasilOpnameTable"
-    );
-
-
-  table.innerHTML =
+  pesan.textContent =
     "⏳ Mengambil hasil opname...";
 
+  table.innerHTML = "";
 
   try {
 
-    hasilTerakhir =
+    const hasil =
       await serverRequest({
 
         type:
@@ -2691,175 +2233,127 @@ async function lihatHasil() {
 
       });
 
+    if (
+      !hasil ||
+      hasil.length === 0
+    ) {
 
-    tampilkanTabelHasil(
-      hasilTerakhir
-    );
+      pesan.textContent =
+        "Tidak ada hasil opname pada tanggal tersebut.";
 
+      return;
+
+    }
+
+    let totalSistem = 0;
+    let totalFisik = 0;
+    let totalSelisih = 0;
+
+    let htmlTable =
+      "<table style='width:100%;border-collapse:collapse;font-size:13px;'>" +
+
+      "<thead>" +
+      "<tr>" +
+      "<th style='border:1px solid #ccc;padding:7px;'>Waktu</th>" +
+      "<th style='border:1px solid #ccc;padding:7px;'>Cabang</th>" +
+      "<th style='border:1px solid #ccc;padding:7px;'>Barcode</th>" +
+      "<th style='border:1px solid #ccc;padding:7px;'>Nama</th>" +
+      "<th style='border:1px solid #ccc;padding:7px;'>Petugas</th>" +
+      "<th style='border:1px solid #ccc;padding:7px;'>Sistem</th>" +
+      "<th style='border:1px solid #ccc;padding:7px;'>Fisik</th>" +
+      "<th style='border:1px solid #ccc;padding:7px;'>Selisih</th>" +
+      "</tr>" +
+      "</thead><tbody>";
+
+    hasil.forEach(function(item) {
+
+      totalSistem +=
+        Number(item.stokSistem) || 0;
+
+      totalFisik +=
+        Number(item.stokFisik) || 0;
+
+      totalSelisih +=
+        Number(item.selisih) || 0;
+
+      htmlTable +=
+        "<tr>" +
+        "<td style='border:1px solid #ccc;padding:7px;'>" +
+        escapeHtml(item.waktu) +
+        "</td>" +
+        "<td style='border:1px solid #ccc;padding:7px;'>" +
+        escapeHtml(item.cabang) +
+        "</td>" +
+        "<td style='border:1px solid #ccc;padding:7px;'>" +
+        escapeHtml(item.barcode) +
+        "</td>" +
+        "<td style='border:1px solid #ccc;padding:7px;'>" +
+        escapeHtml(item.nama) +
+        "</td>" +
+        "<td style='border:1px solid #ccc;padding:7px;'>" +
+        escapeHtml(item.petugas) +
+        "</td>" +
+        "<td style='border:1px solid #ccc;padding:7px;text-align:right;'>" +
+        formatAngka(item.stokSistem) +
+        "</td>" +
+        "<td style='border:1px solid #ccc;padding:7px;text-align:right;'>" +
+        formatAngka(item.stokFisik) +
+        "</td>" +
+        "<td style='border:1px solid #ccc;padding:7px;text-align:right;'>" +
+        formatAngka(item.selisih) +
+        "</td>" +
+        "</tr>";
+
+    });
+
+    htmlTable +=
+      "</tbody>" +
+      "<tfoot>" +
+      "<tr>" +
+      "<th colspan='5' style='border:1px solid #ccc;padding:7px;text-align:right;'>TOTAL</th>" +
+      "<th style='border:1px solid #ccc;padding:7px;text-align:right;'>" +
+      formatAngka(totalSistem) +
+      "</th>" +
+      "<th style='border:1px solid #ccc;padding:7px;text-align:right;'>" +
+      formatAngka(totalFisik) +
+      "</th>" +
+      "<th style='border:1px solid #ccc;padding:7px;text-align:right;'>" +
+      formatAngka(totalSelisih) +
+      "</th>" +
+      "</tr>" +
+      "</tfoot>" +
+      "</table>";
+
+    table.innerHTML =
+      htmlTable;
+
+    pesan.textContent =
+      "✅ Ditemukan " +
+      hasil.length +
+      " data opname.";
+
+    window._hasilOpnameTerakhir =
+      hasil;
 
   } catch (error) {
 
-    table.innerHTML =
-      "<div class='status error'>" +
-      escapeHtml(
-        error.message
-      ) +
-      "</div>";
+    pesan.textContent =
+      "❌ Gagal mengambil hasil: " +
+      error.message;
 
   }
 
 }
 
 
-/* =================================================
-   TABEL
-================================================= */
+function downloadHasilOpname() {
 
-function tampilkanTabelHasil(
-  data
-) {
-
-  const table =
-    document.getElementById(
-      "hasilOpnameTable"
-    );
-
+  const hasil =
+    window._hasilOpnameTerakhir;
 
   if (
-    !data ||
-    !data.length
-  ) {
-
-    table.innerHTML =
-      "<div class='status warning'>" +
-      "Tidak ada hasil opname pada tanggal tersebut." +
-      "</div>";
-
-    return;
-
-  }
-
-
-  let html = "";
-
-
-  html +=
-    "<table>";
-
-
-  html +=
-    "<thead><tr>" +
-
-    "<th>No</th>" +
-
-    "<th>Waktu</th>" +
-
-    "<th>Cabang</th>" +
-
-    "<th>Barcode</th>" +
-
-    "<th>Nama Barang</th>" +
-
-    "<th>Satuan</th>" +
-
-    "<th>Petugas</th>" +
-
-    "<th>Stok Sistem</th>" +
-
-    "<th>Stok Fisik</th>" +
-
-    "<th>Selisih</th>" +
-
-    "</tr></thead>";
-
-
-  html +=
-    "<tbody>";
-
-
-  data.forEach(
-    function(item, index) {
-
-      html +=
-        "<tr>" +
-
-        "<td>" +
-        (index + 1) +
-        "</td>" +
-
-        "<td>" +
-        escapeHtml(
-          item.waktu
-        ) +
-        "</td>" +
-
-        "<td>" +
-        escapeHtml(
-          item.cabang
-        ) +
-        "</td>" +
-
-        "<td>" +
-        escapeHtml(
-          item.barcode
-        ) +
-        "</td>" +
-
-        "<td>" +
-        escapeHtml(
-          item.nama
-        ) +
-        "</td>" +
-
-        "<td>" +
-        escapeHtml(
-          item.satuan
-        ) +
-        "</td>" +
-
-        "<td>" +
-        escapeHtml(
-          item.petugas
-        ) +
-        "</td>" +
-
-        "<td>" +
-        item.stokSistem +
-        "</td>" +
-
-        "<td>" +
-        item.stokFisik +
-        "</td>" +
-
-        "<td>" +
-        item.selisih +
-        "</td>" +
-
-        "</tr>";
-
-    }
-  );
-
-
-  html +=
-    "</tbody></table>";
-
-
-  table.innerHTML =
-    html;
-
-}
-
-
-/* =================================================
-   DOWNLOAD
-================================================= */
-
-function downloadHasil() {
-
-  if (
-    !hasilTerakhir ||
-    !hasilTerakhir.length
+    !hasil ||
+    hasil.length === 0
   ) {
 
     alert(
@@ -2870,224 +2364,162 @@ function downloadHasil() {
 
   }
 
+  const header = [
+    "Waktu",
+    "Tanggal",
+    "Cabang",
+    "Barcode",
+    "Nama",
+    "Satuan",
+    "Petugas",
+    "Stok Sistem",
+    "Stok Fisik",
+    "Selisih"
+  ];
 
-  let csv =
-    "Tanggal,Waktu,Cabang,Barcode,Nama Barang,Satuan,Petugas,Stok Sistem,Stok Fisik,Selisih\n";
+  const rows =
+    hasil.map(function(item) {
 
-
-  hasilTerakhir.forEach(
-    function(item) {
-
-      csv += [
-
-        csvCell(
-          item.tanggal
-        ),
-
-        csvCell(
-          item.waktu
-        ),
-
-        csvCell(
-          item.cabang
-        ),
-
-        csvCell(
-          item.barcode
-        ),
-
-        csvCell(
-          item.nama
-        ),
-
-        csvCell(
-          item.satuan
-        ),
-
-        csvCell(
-          item.petugas
-        ),
-
+      return [
+        item.waktu,
+        item.tanggal,
+        item.cabang,
+        item.barcode,
+        item.nama,
+        item.satuan,
+        item.petugas,
         item.stokSistem,
-
         item.stokFisik,
-
         item.selisih
+      ];
 
-      ].join(",") +
+    });
 
-      "\n";
+  const csv =
+    [header]
+      .concat(rows)
+      .map(function(row) {
 
-    }
-  );
+        return row.map(function(value) {
 
+          return '"' +
+            String(
+              value == null
+                ? ""
+                : value
+            ).replace(
+              /"/g,
+              '""'
+            ) +
+            '"';
+
+        }).join(",");
+
+      })
+      .join("\r\n");
 
   const blob =
     new Blob(
-      [csv],
+      ["\uFEFF" + csv],
       {
         type:
           "text/csv;charset=utf-8;"
       }
     );
 
-
   const url =
-    URL.createObjectURL(
-      blob
-    );
+    URL.createObjectURL(blob);
 
+  const a =
+    document.createElement("a");
 
   const tanggal =
     document.getElementById(
-      "tanggalHasil"
-    ).value;
+      "tanggalHasilOpname"
+    ).value ||
+    "hasil";
 
-
-  const a =
-    document.createElement(
-      "a"
-    );
-
-
-  a.href =
-    url;
-
+  a.href = url;
 
   a.download =
     "HASIL_OPNAME_" +
     tanggal +
     ".csv";
 
-
-  document.body.appendChild(
-    a
-  );
-
+  document.body.appendChild(a);
 
   a.click();
 
+  a.remove();
 
-  document.body.removeChild(
-    a
-  );
-
-
-  URL.revokeObjectURL(
-    url
-  );
+  URL.revokeObjectURL(url);
 
 }
 
 
-/* =================================================
-   CSV
-================================================= */
-
-function csvCell(
-  value
-) {
-
-  return '"' +
-    String(
-      value == null
-        ? ""
-        : value
-    )
-      .replace(
-        /"/g,
-        '""'
-      ) +
-    '"';
-
-}
-
-
-/* =================================================
-   HAPUS HASIL
-================================================= */
-
-async function hapusHasil() {
+async function hapusHasilOpnameDenganTanggal() {
 
   if (
     !aksesSaya ||
     (
-      aksesSaya.role !==
-        "ADMIN" &&
-      aksesSaya.role !==
-        "SUPER_ADMIN"
+      aksesSaya.role !== "ADMIN" &&
+      aksesSaya.role !== "SUPER_ADMIN"
     )
   ) {
 
     alert(
-      "Hanya ADMIN / SUPER ADMIN yang dapat menghapus hasil opname."
+      "Akses hanya untuk ADMIN / SUPER ADMIN."
     );
 
     return;
 
   }
 
-
   const tanggal =
     document.getElementById(
-      "tanggalHasil"
+      "tanggalHasilOpname"
     ).value;
-
 
   const cabang =
     document.getElementById(
-      "cabangHasil"
+      "cabang"
     ).value;
-
 
   if (!tanggal) {
 
     alert(
-      "Pilih tanggal yang akan dihapus."
+      "Pilih tanggal terlebih dahulu."
     );
 
     return;
 
   }
 
+  const tujuan =
+    cabang
+      ? "cabang " + cabang
+      : "SEMUA CABANG";
 
-  let pesan =
-    "PERINGATAN!\n\n" +
+  const yakin =
+    confirm(
+      "Yakin menghapus hasil opname tanggal " +
+      tanggal +
+      " untuk " +
+      tujuan +
+      "?\n\nDATA STOCK UTAMA TIDAK AKAN DIHAPUS."
+    );
 
-    "Hasil opname tanggal:\n" +
-    tanggal;
-
-
-  if (cabang) {
-
-    pesan +=
-      "\nCabang: " +
-      cabang;
-
-  } else {
-
-    pesan +=
-      "\nSEMUA CABANG";
-
-  }
-
-
-  pesan +=
-    "\n\nData hasil opname akan dihapus." +
-
-    "\nDATA_STOK tidak akan dihapus." +
-
-    "\n\nLanjutkan?";
-
-
-  if (
-    !confirm(pesan)
-  ) {
-
+  if (!yakin) {
     return;
-
   }
 
+  const pesan =
+    document.getElementById(
+      "pesanHasilOpname"
+    );
+
+  pesan.textContent =
+    "⏳ Menghapus...";
 
   try {
 
@@ -3105,272 +2537,90 @@ async function hapusHasil() {
 
       });
 
-
-    alert(
-      "Berhasil menghapus " +
-      result.jumlah +
-      " hasil opname."
-    );
-
-
-    hasilTerakhir =
-      [];
-
+    pesan.textContent =
+      "✅ " +
+      (
+        result.message ||
+        "Hasil opname berhasil dihapus."
+      );
 
     document.getElementById(
       "hasilOpnameTable"
-    ).innerHTML =
-      "";
+    ).innerHTML = "";
 
+    window._hasilOpnameTerakhir =
+      [];
 
   } catch (error) {
 
-    alert(
-      "Gagal menghapus:\n" +
-      error.message
-    );
+    pesan.textContent =
+      "❌ Gagal menghapus: " +
+      error.message;
 
   }
 
 }
 
-
-/* =================================================
-   ENTER = CARI
-================================================= */
-
-document
-  .getElementById(
-    "barcode"
-  )
-  .addEventListener(
-    "keydown",
-    function(e) {
-
-      if (
-        e.key === "Enter"
-      ) {
-
-        e.preventDefault();
-
-        cariBarang();
-
-      }
-
-    }
-  );
-
-
-/* =================================================
-   ESCAPE HTML
-================================================= */
-
-function escapeHtml(
-  value
-) {
-
-  return String(
-    value == null
-      ? ""
-      : value
-  )
-
-  .replace(
-    /&/g,
-    "&amp;"
-  )
-
-  .replace(
-    /</g,
-    "&lt;"
-  )
-
-  .replace(
-    />/g,
-    "&gt;"
-  )
-
-  .replace(
-    /"/g,
-    "&quot;"
-  )
-
-  .replace(
-    /'/g,
-    "&#039;"
-  );
-
-}
-
 </script>
+
 
 <!-- =====================================================
      BRIDGE GITHUB → APPS SCRIPT
 ====================================================== -->
-
 <iframe
   id="appsScriptBridge"
   src="https://script.google.com/macros/s/AKfycbxK_54TKlD52bSvHw05jTCGx4PQI7BR9oJMXtMzhW41pphOVXgJrjZErQkmfNH0Nhs/exec"
-  style="
-    width:0;
-    height:0;
-    border:0;
-    position:absolute;
-    left:-9999px;
-    visibility:hidden;
-  "
-></iframe>
-
+  style="width:0;height:0;border:0;position:absolute;left:-9999px;visibility:hidden;"
+  aria-hidden="true"></iframe>
 
 <script>
-
-const APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbxK_54TKlD52bSvHw05jTCGx4PQI7BR9oJMXtMzhW41pphOVXgJrjZErQkmfNH0Nhs/exec";
-
-
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxK_54TKlD52bSvHw05jTCGx4PQI7BR9oJMXtMzhW41pphOVXgJrjZErQkmfNH0Nhs/exec";
 let requestCounter = 0;
-
 const requestCallbacks = {};
 
-
-/* =====================================================
-   SERVER REQUEST
-   GitHub → iframe Apps Script
-===================================================== */
-
 function serverRequest(data) {
-
   return new Promise(function(resolve, reject) {
+    const requestId = "REQ_" + Date.now() + "_" + (++requestCounter);
+    requestCallbacks[requestId] = {resolve:resolve, reject:reject};
 
-    const requestId =
-      "REQ_" +
-      Date.now() +
-      "_" +
-      (++requestCounter);
-
-
-    requestCallbacks[requestId] = {
-      resolve: resolve,
-      reject: reject
-    };
-
-
-    const iframe =
-      document.getElementById(
-        "appsScriptBridge"
-      );
-
-
+    const iframe = document.getElementById("appsScriptBridge");
     if (!iframe) {
-
-      reject(
-        new Error(
-          "Apps Script Bridge tidak ditemukan."
-        )
-      );
-
+      delete requestCallbacks[requestId];
+      reject(new Error("Apps Script Bridge tidak ditemukan."));
       return;
     }
 
-
     iframe.contentWindow.postMessage(
-      {
-        type: "GITHUB_REQUEST",
-        requestId: requestId,
-        data: data
-      },
+      {type:"GITHUB_REQUEST", requestId:requestId, data:data},
       "*"
     );
 
-
     setTimeout(function() {
-
-      if (
-        requestCallbacks[requestId]
-      ) {
-
-        delete requestCallbacks[
-          requestId
-        ];
-
-        reject(
-          new Error(
-            "Koneksi ke server Apps Script timeout."
-          )
-        );
+      if (requestCallbacks[requestId]) {
+        delete requestCallbacks[requestId];
+        reject(new Error("Koneksi ke server Apps Script timeout."));
       }
-
     }, 30000);
-
   });
-
 }
 
+window.addEventListener("message", function(event) {
+  if (!event.data || event.data.type !== "GITHUB_RESPONSE") return;
 
-/* =====================================================
-   TERIMA RESPONSE DARI APPS SCRIPT
-===================================================== */
+  const callback = requestCallbacks[event.data.requestId];
+  if (!callback) return;
 
-window.addEventListener(
-  "message",
-  function(event) {
+  delete requestCallbacks[event.data.requestId];
 
-    if (!event.data) {
-      return;
-    }
-
-
-    if (
-      event.data.type !==
-      "GITHUB_RESPONSE"
-    ) {
-      return;
-    }
-
-
-    const requestId =
-      event.data.requestId;
-
-
-    const callback =
-      requestCallbacks[
-        requestId
-      ];
-
-
-    if (!callback) {
-      return;
-    }
-
-
-    delete requestCallbacks[
-      requestId
-    ];
-
-
-    if (
-      event.data.success
-    ) {
-
-      callback.resolve(
-        event.data.data
-      );
-
-    } else {
-
-      callback.reject(
-        new Error(
-          event.data.error ||
-          "Terjadi kesalahan pada server."
-        )
-      );
-
-    }
-
+  if (event.data.success) {
+    callback.resolve(event.data.data);
+  } else {
+    callback.reject(new Error(event.data.error || "Terjadi kesalahan pada server."));
   }
-);
-
+});
 </script>
+
+
 </body>
 
 </html>
